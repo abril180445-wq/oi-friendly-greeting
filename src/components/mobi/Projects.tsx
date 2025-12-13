@@ -1,4 +1,4 @@
-import { ArrowRight, Globe, Smartphone } from "lucide-react";
+import { ArrowRight, Globe, Smartphone, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Projects = () => {
@@ -56,28 +56,35 @@ const Projects = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Entregue":
-        return "bg-green-500/20 text-green-400";
+        return "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
       case "Em andamento":
-        return "bg-primary/20 text-primary";
+        return "bg-primary/20 text-primary border-primary/30";
       case "Lançamento":
-        return "bg-blue-500/20 text-blue-400";
+        return "bg-violet-500/20 text-violet-400 border-violet-500/30";
       default:
         return "bg-muted text-muted-foreground";
     }
   };
 
   return (
-    <section id="projetos" className="section-padding bg-secondary">
-      <div className="container-custom">
+    <section id="projetos" className="section-padding bg-secondary relative overflow-hidden noise">
+      {/* Background Effects */}
+      <div className="absolute inset-0 grid-pattern opacity-20" />
+      <div className="absolute top-1/2 -translate-y-1/2 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+
+      <div className="container-custom relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="text-primary font-semibold mb-4 tracking-wider uppercase">
-            Nossos Projetos
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-foreground mb-6">
-            Soluções que <span className="text-primary">transformam</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Layers size={16} className="text-primary" />
+            <span className="text-primary font-medium text-sm tracking-wide">
+              Nossos Projetos
+            </span>
+          </div>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            Soluções que <span className="text-gradient">transformam</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
             Conheça alguns dos sistemas e aplicações que desenvolvemos com
             excelência, sempre superando as expectativas dos nossos clientes.
           </p>
@@ -85,21 +92,23 @@ const Projects = () => {
 
         {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-secondary border border-border/20 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300"
+              className="group glass-dark rounded-2xl overflow-hidden card-hover"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Image */}
               <div className="aspect-[4/3] overflow-hidden relative">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent" />
                 <div className="absolute top-4 right-4">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold border ${getStatusColor(
                       project.status
                     )}`}
                   >
@@ -110,39 +119,41 @@ const Projects = () => {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-secondary-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                <div className="flex flex-col gap-2 mb-4">
+                <div className="flex flex-col gap-2 mb-5">
                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <Globe size={14} />
+                    <Globe size={14} className="text-primary/70" />
                     {project.client}
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <Smartphone size={14} />
+                    <Smartphone size={14} className="text-primary/70" />
                     {project.type}
                   </div>
                 </div>
-                <Button
-                  variant="ghost"
-                  className="text-primary hover:text-primary hover:bg-primary/10 p-0 h-auto font-semibold"
-                >
+                <button className="flex items-center gap-2 text-primary font-semibold text-sm group/btn">
                   Ver detalhes
-                  <ArrowRight className="ml-2" size={16} />
-                </Button>
+                  <ArrowRight
+                    size={16}
+                    className="group-hover/btn:translate-x-1 transition-transform duration-300"
+                  />
+                </button>
               </div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Button
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8"
+            className="btn-premium text-primary-foreground font-semibold text-lg px-10 h-14 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300"
           >
-            Ver Todos os Projetos
-            <ArrowRight className="ml-2" size={20} />
+            <span className="flex items-center gap-2">
+              Ver Todos os Projetos
+              <ArrowRight size={20} />
+            </span>
           </Button>
         </div>
       </div>
