@@ -33,8 +33,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "E-mail",
-      info: "contato@mobiconstrutora.com",
-      link: "mailto:contato@mobiconstrutora.com",
+      info: "contato@rorschachmotion.com",
+      link: "mailto:contato@rorschachmotion.com",
     },
     {
       icon: MapPin,
@@ -45,7 +45,7 @@ const Contact = () => {
     {
       icon: Clock,
       title: "Horário",
-      info: "Seg - Sex: 8h às 18h",
+      info: "Seg - Sex: 9h às 18h",
       link: "#",
     },
   ];
@@ -62,8 +62,8 @@ const Contact = () => {
             Fale <span className="text-primary">Conosco</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Estamos prontos para atender você. Entre em contato e transforme seu
-            projeto em realidade.
+            Pronto para transformar sua ideia em realidade? Entre em contato e
+            vamos desenvolver juntos a solução ideal para o seu negócio.
           </p>
         </div>
 
@@ -123,7 +123,7 @@ const Contact = () => {
                   Mensagem
                 </label>
                 <Textarea
-                  placeholder="Como podemos ajudar?"
+                  placeholder="Descreva seu projeto ou necessidade..."
                   rows={4}
                   value={formData.message}
                   onChange={(e) =>
@@ -179,7 +179,7 @@ const Contact = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Localização Mobi Construtora"
+                title="Localização Rorschach Motion"
               />
             </div>
           </div>
