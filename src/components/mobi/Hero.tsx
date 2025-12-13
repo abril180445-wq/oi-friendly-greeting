@@ -1,41 +1,59 @@
-import { ArrowRight, Code2, Users, Rocket } from "lucide-react";
+import { ArrowRight, Code2, Users, Rocket, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
+  const stats = [
+    { icon: Code2, value: "80+", label: "Sistemas Entregues" },
+    { icon: Users, value: "200+", label: "Clientes Ativos" },
+    { icon: Rocket, value: "8+", label: "Anos de Experiência" },
+  ];
+
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center pt-24"
-      style={{
-        backgroundImage: `linear-gradient(to right, hsl(var(--secondary) / 0.95), hsl(var(--secondary) / 0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden animated-gradient noise"
     >
-      <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Background Effects */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/15 rounded-full blur-[100px] animate-pulse animation-delay-500" />
+
+      <div className="container-custom relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <p className="text-primary font-semibold mb-4 tracking-wider uppercase">
-              Desenvolvimento de Sistemas
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-foreground mb-6 leading-tight">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-up">
+              <Sparkles size={16} className="text-primary" />
+              <span className="text-primary font-medium text-sm tracking-wide">
+                Desenvolvimento de Sistemas
+              </span>
+            </div>
+
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-8 leading-[1.1] animate-fade-up animation-delay-100">
               Transformamos suas{" "}
-              <span className="text-primary">ideias</span> em{" "}
-              <span className="text-primary">soluções digitais</span>
+              <span className="text-gradient">ideias</span> em{" "}
+              <span className="text-gradient">soluções digitais</span>
             </h1>
-            <p className="text-muted-foreground text-lg md:text-xl mb-8 max-w-xl mx-auto lg:mx-0">
-              Somos especialistas em criar sistemas personalizados, aplicações web e mobile que impulsionam o seu negócio para o próximo nível.
+
+            <p className="text-muted-foreground text-lg md:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up animation-delay-200">
+              Somos especialistas em criar sistemas personalizados, aplicações
+              web e mobile que impulsionam o seu negócio para o próximo nível.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-lg px-8">
-                Conheça Nossos Projetos
-                <ArrowRight className="ml-2" size={20} />
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up animation-delay-300">
+              <Button
+                size="lg"
+                className="btn-premium text-primary-foreground font-semibold text-lg px-8 h-14 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300"
+              >
+                <span className="flex items-center gap-2">
+                  Conheça Nossos Projetos
+                  <ArrowRight size={20} />
+                </span>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-lg px-8"
+                className="border-2 border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary font-semibold text-lg px-8 h-14 rounded-xl transition-all duration-300"
               >
                 Fale Conosco
               </Button>
@@ -43,41 +61,33 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="hidden lg:grid grid-cols-1 gap-6">
-            <div className="bg-secondary/80 backdrop-blur-sm border border-border/20 rounded-2xl p-6 flex items-center gap-4">
-              <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
-                <Code2 className="text-primary" size={32} />
+          <div className="hidden lg:flex flex-col gap-5">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className="glass-dark rounded-2xl p-6 flex items-center gap-5 card-hover animate-fade-up"
+                style={{ animationDelay: `${(index + 3) * 100}ms` }}
+              >
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20">
+                  <stat.icon className="text-primary" size={28} />
+                </div>
+                <div>
+                  <p className="font-heading text-4xl font-bold text-foreground">
+                    {stat.value}
+                  </p>
+                  <p className="text-muted-foreground font-medium">
+                    {stat.label}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-3xl font-bold text-secondary-foreground">80+</p>
-                <p className="text-muted-foreground">Sistemas Entregues</p>
-              </div>
-            </div>
-            <div className="bg-secondary/80 backdrop-blur-sm border border-border/20 rounded-2xl p-6 flex items-center gap-4">
-              <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
-                <Users className="text-primary" size={32} />
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-secondary-foreground">200+</p>
-                <p className="text-muted-foreground">Clientes Ativos</p>
-              </div>
-            </div>
-            <div className="bg-secondary/80 backdrop-blur-sm border border-border/20 rounded-2xl p-6 flex items-center gap-4">
-              <div className="w-16 h-16 bg-primary/20 rounded-xl flex items-center justify-center">
-                <Rocket className="text-primary" size={32} />
-              </div>
-              <div>
-                <p className="text-3xl font-bold text-secondary-foreground">8+</p>
-                <p className="text-muted-foreground">Anos de Experiência</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center pt-2">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-7 h-12 border-2 border-primary/50 rounded-full flex justify-center pt-2">
           <div className="w-1.5 h-3 bg-primary rounded-full animate-pulse" />
         </div>
       </div>

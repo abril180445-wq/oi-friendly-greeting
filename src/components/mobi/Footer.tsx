@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter, Youtube, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube, ArrowUp, Heart } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -28,30 +28,41 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary pt-16 pb-8">
-      <div className="container-custom">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer className="bg-secondary relative overflow-hidden noise">
+      {/* Background decoration */}
+      <div className="absolute inset-0 grid-pattern opacity-10" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+      <div className="container-custom relative z-10 pt-20 pb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
-          <div>
-            <a href="#inicio" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">R</span>
+          <div className="lg:col-span-1">
+            <a href="#inicio" className="flex items-center gap-3 mb-6 group">
+              <div className="w-11 h-11 bg-gradient-to-br from-primary to-cyan-400 rounded-xl flex items-center justify-center shadow-glow transition-transform duration-300 group-hover:scale-105">
+                <span className="text-primary-foreground font-heading font-bold text-xl">
+                  R
+                </span>
               </div>
-              <span className="text-secondary-foreground font-bold text-xl tracking-tight">
-                RORSCHACH<span className="text-primary">MOTION</span>
-              </span>
+              <div className="flex flex-col">
+                <span className="text-foreground font-heading font-bold text-lg tracking-tight leading-none">
+                  RORSCHACH
+                </span>
+                <span className="text-primary font-heading font-semibold text-sm tracking-widest">
+                  MOTION
+                </span>
+              </div>
             </a>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 leading-relaxed">
               Há mais de 8 anos transformando ideias em soluções digitais
               inovadoras e escaláveis.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 bg-secondary border border-border/20 rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                  className="w-10 h-10 rounded-xl bg-muted/50 border border-border/30 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-glow transition-all duration-300"
                 >
                   <social.icon size={18} />
                 </a>
@@ -61,7 +72,7 @@ const Footer = () => {
 
           {/* Quick links */}
           <div>
-            <h4 className="text-secondary-foreground font-bold text-lg mb-6">
+            <h4 className="font-heading text-foreground font-bold text-lg mb-6">
               Links Rápidos
             </h4>
             <ul className="space-y-3">
@@ -69,7 +80,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 line-reveal inline-block"
                   >
                     {link.name}
                   </a>
@@ -80,7 +91,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-secondary-foreground font-bold text-lg mb-6">
+            <h4 className="font-heading text-foreground font-bold text-lg mb-6">
               Nossos Serviços
             </h4>
             <ul className="space-y-3">
@@ -94,23 +105,23 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-secondary-foreground font-bold text-lg mb-6">
+            <h4 className="font-heading text-foreground font-bold text-lg mb-6">
               Newsletter
             </h4>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-4 leading-relaxed">
               Receba novidades sobre tecnologia e nossos lançamentos.
             </p>
-            <form className="flex gap-2">
+            <form className="space-y-3">
               <input
                 type="email"
                 placeholder="Seu e-mail"
-                className="flex-1 px-4 py-2 bg-secondary border border-border/20 rounded-lg text-secondary-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary"
+                className="w-full px-4 py-3 bg-muted/30 border border-border/30 rounded-xl text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                className="w-full px-4 py-3 btn-premium rounded-xl font-semibold text-primary-foreground shadow-glow hover:shadow-glow-lg transition-all duration-300"
               >
-                Enviar
+                <span>Inscrever-se</span>
               </button>
             </form>
           </div>
@@ -119,13 +130,14 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-border/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Rorschach Motion. Todos os direitos
-              reservados.
+            <p className="text-muted-foreground text-sm text-center md:text-left flex items-center gap-1">
+              © {new Date().getFullYear()} Rorschach Motion. Feito com
+              <Heart size={14} className="text-primary fill-primary" />
+              no Brasil.
             </p>
             <button
               onClick={scrollToTop}
-              className="w-10 h-10 bg-primary text-primary-foreground rounded-lg flex items-center justify-center hover:bg-primary/90 transition-colors"
+              className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-cyan-400 text-primary-foreground flex items-center justify-center shadow-glow hover:shadow-glow-lg hover:scale-105 transition-all duration-300"
               aria-label="Voltar ao topo"
             >
               <ArrowUp size={20} />
