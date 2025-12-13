@@ -36,7 +36,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary font-semibold text-lg px-8"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-lg px-8"
               >
                 Fale Conosco
               </Button>
