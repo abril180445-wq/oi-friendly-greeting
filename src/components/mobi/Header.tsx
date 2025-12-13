@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Phone, Mail, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Menu, X, Phone, Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -22,20 +22,20 @@ const Header = () => {
               <Phone size={14} />
               (11) 99999-9999
             </a>
-            <a href="mailto:contato@mobiconstrutora.com" className="flex items-center gap-2 hover:text-primary transition-colors">
+            <a href="mailto:contato@rorschachmotion.com" className="flex items-center gap-2 hover:text-primary transition-colors">
               <Mail size={14} />
-              contato@mobiconstrutora.com
+              contato@rorschachmotion.com
             </a>
           </div>
           <div className="flex items-center gap-4">
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Facebook size={16} />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Instagram size={16} />
+              <Github size={16} />
             </a>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
               <Linkedin size={16} />
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Twitter size={16} />
             </a>
           </div>
         </div>
@@ -47,10 +47,10 @@ const Header = () => {
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-2">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">M</span>
+              <span className="text-primary-foreground font-bold text-xl">R</span>
             </div>
             <span className="text-secondary-foreground font-bold text-xl tracking-tight">
-              MOBI<span className="text-primary">CONSTRUTORA</span>
+              RORSCHACH<span className="text-primary">MOTION</span>
             </span>
           </a>
 
@@ -66,7 +66,7 @@ const Header = () => {
               </a>
             ))}
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold">
-              Consulte Agora
+              Solicite um Orçamento
             </Button>
           </div>
 
@@ -94,7 +94,7 @@ const Header = () => {
                 </a>
               ))}
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full">
-                Consulte Agora
+                Solicite um Orçamento
               </Button>
             </div>
           </div>

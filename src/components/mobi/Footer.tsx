@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Youtube, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube, ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -13,17 +13,17 @@ const Footer = () => {
   ];
 
   const services = [
-    "Construção Residencial",
-    "Construção Comercial",
-    "Reformas",
-    "Projetos Arquitetônicos",
-    "Consultoria",
+    "Sistemas Web",
+    "Aplicativos Mobile",
+    "APIs e Integrações",
+    "E-commerce",
+    "Consultoria em TI",
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Github, href: "#", label: "GitHub" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Youtube, href: "#", label: "YouTube" },
   ];
 
@@ -35,15 +35,15 @@ const Footer = () => {
           <div>
             <a href="#inicio" className="flex items-center gap-2 mb-6">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">M</span>
+                <span className="text-primary-foreground font-bold text-xl">R</span>
               </div>
               <span className="text-secondary-foreground font-bold text-xl tracking-tight">
-                MOBI<span className="text-primary">CONSTRUTORA</span>
+                RORSCHACH<span className="text-primary">MOTION</span>
               </span>
             </a>
             <p className="text-muted-foreground mb-6">
-              Há mais de 20 anos construindo sonhos e transformando espaços com
-              qualidade e inovação.
+              Há mais de 8 anos transformando ideias em soluções digitais
+              inovadoras e escaláveis.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (
@@ -98,7 +98,7 @@ const Footer = () => {
               Newsletter
             </h4>
             <p className="text-muted-foreground mb-4">
-              Receba novidades e lançamentos diretamente no seu e-mail.
+              Receba novidades sobre tecnologia e nossos lançamentos.
             </p>
             <form className="flex gap-2">
               <input
@@ -120,7 +120,7 @@ const Footer = () => {
         <div className="border-t border-border/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Mobi Construtora. Todos os direitos
+              © {new Date().getFullYear()} Rorschach Motion. Todos os direitos
               reservados.
             </p>
             <button

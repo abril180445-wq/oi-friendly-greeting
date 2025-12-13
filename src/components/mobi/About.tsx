@@ -2,12 +2,12 @@ import { CheckCircle, Target, Eye, Heart } from "lucide-react";
 
 const About = () => {
   const features = [
-    "Equipe altamente qualificada",
-    "Materiais de primeira qualidade",
-    "Compromisso com prazos",
-    "Atendimento personalizado",
-    "Garantia em todos os serviços",
-    "Suporte pós-entrega",
+    "Equipe de desenvolvedores experientes",
+    "Metodologias ágeis (Scrum/Kanban)",
+    "Código limpo e documentado",
+    "Suporte técnico contínuo",
+    "Entregas dentro do prazo",
+    "Tecnologias modernas e escaláveis",
   ];
 
   const values = [
@@ -15,19 +15,19 @@ const About = () => {
       icon: Target,
       title: "Missão",
       description:
-        "Construir com excelência, entregando projetos que superam expectativas e transformam a vida das pessoas.",
+        "Desenvolver soluções tecnológicas inovadoras que transformem negócios e impulsionem resultados.",
     },
     {
       icon: Eye,
       title: "Visão",
       description:
-        "Ser reconhecida como a construtora mais confiável e inovadora do mercado brasileiro.",
+        "Ser referência em desenvolvimento de sistemas, reconhecidos pela excelência técnica e inovação.",
     },
     {
       icon: Heart,
       title: "Valores",
       description:
-        "Ética, transparência, qualidade, compromisso com o cliente e respeito ao meio ambiente.",
+        "Inovação, qualidade, transparência, comprometimento com o cliente e melhoria contínua.",
     },
   ];
 
@@ -40,11 +40,11 @@ const About = () => {
             Sobre Nós
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Conheça a <span className="text-primary">Mobi Construtora</span>
+            Conheça a <span className="text-primary">Rorschach Motion</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Há mais de duas décadas construindo sonhos e transformando espaços
-            com qualidade, inovação e compromisso.
+            Há mais de 8 anos criando soluções digitais que transformam a forma
+            como empresas operam e crescem no mercado.
           </p>
         </div>
 
@@ -53,13 +53,13 @@ const About = () => {
           <div className="relative">
             <div className="aspect-[4/3] rounded-2xl overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
-                alt="Equipe Mobi Construtora"
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                alt="Equipe Rorschach Motion"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-2xl shadow-lg hidden md:block">
-              <p className="text-4xl font-bold">20+</p>
+              <p className="text-4xl font-bold">8+</p>
               <p className="text-sm font-medium">Anos de experiência</p>
             </div>
           </div>
@@ -67,13 +67,12 @@ const About = () => {
           {/* Content */}
           <div>
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Por que escolher a Mobi Construtora?
+              Por que escolher a Rorschach Motion?
             </h3>
             <p className="text-muted-foreground mb-8">
-              Nossa trajetória é marcada por projetos de sucesso, clientes
-              satisfeitos e um compromisso inabalável com a qualidade. Cada obra
-              que realizamos carrega nossa assinatura de excelência e atenção
-              aos detalhes.
+              Nossa equipe é formada por especialistas apaixonados por
+              tecnologia. Cada projeto que desenvolvemos carrega nossa marca de
+              qualidade, inovação e atenção aos detalhes.
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               {features.map((feature, index) => (

@@ -1,54 +1,54 @@
-import { ArrowRight, MapPin, Building } from "lucide-react";
+import { ArrowRight, Globe, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Residencial Aurora",
-      location: "São Paulo, SP",
-      type: "Residencial",
-      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
+      title: "Sistema ERP Completo",
+      client: "Indústria Têxtil",
+      type: "Web App",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
       status: "Entregue",
     },
     {
       id: 2,
-      title: "Edifício Corporate Tower",
-      location: "Campinas, SP",
-      type: "Comercial",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
+      title: "App de Delivery",
+      client: "Rede de Restaurantes",
+      type: "Mobile App",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80",
       status: "Entregue",
     },
     {
       id: 3,
-      title: "Condomínio Verde Vale",
-      location: "Ribeirão Preto, SP",
-      type: "Residencial",
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80",
+      title: "Plataforma E-commerce",
+      client: "Loja de Moda",
+      type: "Web App",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
       status: "Em andamento",
     },
     {
       id: 4,
-      title: "Shopping Center Mall",
-      location: "Santos, SP",
-      type: "Comercial",
-      image: "https://images.unsplash.com/photo-1567449303078-57ad995bd329?w=600&q=80",
+      title: "Sistema de Gestão Escolar",
+      client: "Rede de Ensino",
+      type: "Web App",
+      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&q=80",
       status: "Entregue",
     },
     {
       id: 5,
-      title: "Residencial Parque das Flores",
-      location: "Sorocaba, SP",
-      type: "Residencial",
-      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
+      title: "App Financeiro",
+      client: "Fintech",
+      type: "Mobile App",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
       status: "Lançamento",
     },
     {
       id: 6,
-      title: "Centro Empresarial Nova Era",
-      location: "São José dos Campos, SP",
-      type: "Comercial",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+      title: "Dashboard Analytics",
+      client: "Empresa de Marketing",
+      type: "Web App",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
       status: "Em andamento",
     },
   ];
@@ -75,11 +75,11 @@ const Projects = () => {
             Nossos Projetos
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-foreground mb-6">
-            Obras que <span className="text-primary">transformam</span>
+            Soluções que <span className="text-primary">transformam</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Conheça alguns dos projetos que realizamos com excelência e dedicação,
-            sempre superando as expectativas dos nossos clientes.
+            Conheça alguns dos sistemas e aplicações que desenvolvemos com
+            excelência, sempre superando as expectativas dos nossos clientes.
           </p>
         </div>
 
@@ -115,11 +115,11 @@ const Projects = () => {
                 </h3>
                 <div className="flex flex-col gap-2 mb-4">
                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <MapPin size={14} />
-                    {project.location}
+                    <Globe size={14} />
+                    {project.client}
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <Building size={14} />
+                    <Smartphone size={14} />
                     {project.type}
                   </div>
                 </div>
