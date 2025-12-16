@@ -39,11 +39,11 @@ const Header = () => {
         <div className="container-custom flex justify-between items-center py-2.5 text-sm border-b border-border/10">
           <div className="flex items-center gap-6 text-muted-foreground">
             <a
-              href="tel:+5511999999999"
+              href="tel:+5541997539084"
               className="flex items-center gap-2 hover:text-primary transition-colors duration-300"
             >
               <Phone size={14} className="text-primary" />
-              (11) 99999-9999
+              (41) 99753-9084
             </a>
             <a
               href="mailto:contato@rorschachmotion.com"
