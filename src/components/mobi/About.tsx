@@ -1,6 +1,11 @@
 import { CheckCircle, Target, Eye, Heart, Zap } from "lucide-react";
+import { useScrollAnimation, useStaggerAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
+  const headerAnimation = useScrollAnimation();
+  const contentAnimation = useScrollAnimation();
+  const valuesAnimation = useStaggerAnimation(3, 150);
+
   const features = [
     "Equipe de desenvolvedores experientes",
     "Metodologias ágeis (Scrum/Kanban)",
@@ -39,7 +44,14 @@ const About = () => {
 
       <div className="container-custom relative z-10">
         {/* Section header */}
-        <div className="text-center mb-20">
+        <div
+          ref={headerAnimation.ref}
+          className={`text-center mb-20 transition-all duration-700 ${
+            headerAnimation.isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Zap size={16} className="text-primary" />
             <span className="text-primary font-medium text-sm tracking-wide">
@@ -55,14 +67,23 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div
+          ref={contentAnimation.ref}
+          className="grid lg:grid-cols-2 gap-16 items-center mb-20"
+        >
           {/* Image */}
-          <div className="relative">
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden border-gradient">
+          <div
+            className={`relative transition-all duration-700 delay-100 ${
+              contentAnimation.isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
+            }`}
+          >
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden border-gradient group">
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
                 alt="Equipe Rorschach Motion"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
             {/* Floating badge */}
@@ -73,11 +94,17 @@ const About = () => {
               </p>
             </div>
             {/* Decorative element */}
-            <div className="absolute -top-6 -left-6 w-20 h-20 border-2 border-primary/30 rounded-2xl hidden md:block" />
+            <div className="absolute -top-6 -left-6 w-20 h-20 border-2 border-primary/30 rounded-2xl hidden md:block animate-pulse" />
           </div>
 
           {/* Content */}
-          <div>
+          <div
+            className={`transition-all duration-700 delay-200 ${
+              contentAnimation.isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
+            }`}
+          >
             <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6">
               Por que escolher a Rorschach Motion?
             </h3>
@@ -90,9 +117,10 @@ const About = () => {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors duration-300"
+                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group cursor-default"
+                  style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
                     <CheckCircle className="text-primary" size={14} />
                   </div>
                   <span className="text-foreground text-sm font-medium">{feature}</span>
@@ -103,16 +131,21 @@ const About = () => {
         </div>
 
         {/* Values */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div ref={valuesAnimation.ref} className="grid md:grid-cols-3 gap-6">
           {values.map((value, index) => (
             <div
               key={index}
-              className="group glass border-gradient rounded-2xl p-8 text-center card-hover"
+              className={`group glass border-gradient rounded-2xl p-8 text-center card-hover transition-all duration-500 ${
+                valuesAnimation.isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={valuesAnimation.getDelayClass(index)}
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-500">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-500">
                 <value.icon className="text-primary" size={28} />
               </div>
-              <h4 className="font-heading text-xl font-bold text-foreground mb-4">
+              <h4 className="font-heading text-xl font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">
                 {value.title}
               </h4>
               <p className="text-muted-foreground leading-relaxed">{value.description}</p>

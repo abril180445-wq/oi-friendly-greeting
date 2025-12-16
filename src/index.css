@@ -301,6 +301,46 @@
     to { opacity: 1; }
   }
 
+  /* Draw line animation for SVG */
+  .animate-draw-line {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: draw-line 1.5s ease-out 0.5s forwards;
+  }
+
+  @keyframes draw-line {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  /* Pulse glow animation */
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.4);
+    }
+  }
+
+  /* Shadow utilities */
+  .shadow-glow {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
+  }
+
+  .shadow-glow-lg {
+    box-shadow: 0 0 50px hsl(var(--primary) / 0.4), 0 0 80px hsl(var(--primary) / 0.2);
+  }
+
+  .shadow-card {
+    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.2);
+  }
+
   .animation-delay-100 { animation-delay: 100ms; }
   .animation-delay-200 { animation-delay: 200ms; }
   .animation-delay-300 { animation-delay: 300ms; }
