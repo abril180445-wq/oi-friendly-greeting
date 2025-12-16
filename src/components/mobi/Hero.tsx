@@ -1,6 +1,62 @@
-import { ArrowRight, Code2, Users, Rocket, Sparkles, ChevronDown } from "lucide-react";
+import { ArrowRight, Code2, Users, Rocket, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { useCountAnimation } from "@/hooks/useCountAnimation";
+
+const StatCard = ({
+  icon: Icon,
+  value,
+  label,
+  index,
+}: {
+  icon: typeof Code2;
+  value: number;
+  label: string;
+  index: number;
+}) => {
+  const { count, ref } = useCountAnimation({ end: value, duration: 2500 });
+
+  return (
+    <div
+      ref={ref}
+      className="glass-dark rounded-2xl p-6 flex items-center gap-5 card-hover animate-fade-up group"
+      style={{ animationDelay: `${(index + 3) * 100}ms` }}
+    >
+      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-500">
+        <Icon className="text-primary" size={28} />
+      </div>
+      <div>
+        <p className="font-heading text-4xl font-bold text-foreground group-hover:text-gradient transition-all duration-300">
+          {count}+
+        </p>
+        <p className="text-muted-foreground font-medium">{label}</p>
+      </div>
+    </div>
+  );
+};
+
+const MobileStatCard = ({
+  value,
+  label,
+  index,
+}: {
+  value: number;
+  label: string;
+  index: number;
+}) => {
+  const { count, ref } = useCountAnimation({ end: value, duration: 2500 });
+
+  return (
+    <div
+      ref={ref}
+      className="glass-dark rounded-xl p-4 text-center animate-fade-up"
+      style={{ animationDelay: `${(index + 4) * 100}ms` }}
+    >
+      <p className="font-heading text-2xl font-bold text-gradient">{count}+</p>
+      <p className="text-muted-foreground text-xs mt-1">{label}</p>
+    </div>
+  );
+};
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -17,9 +73,9 @@ const Hero = () => {
   }, []);
 
   const stats = [
-    { icon: Code2, value: "80+", label: "Sistemas Entregues" },
-    { icon: Users, value: "200+", label: "Clientes Ativos" },
-    { icon: Rocket, value: "8+", label: "Anos de Experiência" },
+    { icon: Code2, value: 80, label: "Sistemas Entregues" },
+    { icon: Users, value: 200, label: "Clientes Ativos" },
+    { icon: Rocket, value: 8, label: "Anos de Experiência" },
   ];
 
   return (
@@ -124,23 +180,13 @@ const Hero = () => {
           {/* Stats */}
           <div className="hidden lg:flex flex-col gap-5">
             {stats.map((stat, index) => (
-              <div
+              <StatCard
                 key={index}
-                className="glass-dark rounded-2xl p-6 flex items-center gap-5 card-hover animate-fade-up group"
-                style={{ animationDelay: `${(index + 3) * 100}ms` }}
-              >
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-500">
-                  <stat.icon className="text-primary" size={28} />
-                </div>
-                <div>
-                  <p className="font-heading text-4xl font-bold text-foreground group-hover:text-gradient transition-all duration-300">
-                    {stat.value}
-                  </p>
-                  <p className="text-muted-foreground font-medium">
-                    {stat.label}
-                  </p>
-                </div>
-              </div>
+                icon={stat.icon}
+                value={stat.value}
+                label={stat.label}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -148,16 +194,12 @@ const Hero = () => {
         {/* Mobile stats */}
         <div className="grid grid-cols-3 gap-4 mt-16 lg:hidden">
           {stats.map((stat, index) => (
-            <div
+            <MobileStatCard
               key={index}
-              className="glass-dark rounded-xl p-4 text-center animate-fade-up"
-              style={{ animationDelay: `${(index + 4) * 100}ms` }}
-            >
-              <p className="font-heading text-2xl font-bold text-gradient">
-                {stat.value}
-              </p>
-              <p className="text-muted-foreground text-xs mt-1">{stat.label}</p>
-            </div>
+              value={stat.value}
+              label={stat.label}
+              index={index}
+            />
           ))}
         </div>
       </div>
