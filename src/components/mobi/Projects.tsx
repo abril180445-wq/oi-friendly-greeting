@@ -9,6 +9,15 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
+      title: "Tefilin - Sistema de Gestão para Igrejas",
+      client: "Igreja Assembleia de Deus",
+      type: "Web App",
+      image: "/images/project-tefilin.png",
+      status: "Entregue",
+      link: "https://wonder-stack.lovable.app/auth",
+    },
+    {
+      id: 2,
       title: "Sistema ERP Completo",
       client: "Indústria Têxtil",
       type: "Web App",
@@ -16,7 +25,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 2,
+      id: 3,
       title: "App de Delivery",
       client: "Rede de Restaurantes",
       type: "Mobile App",
@@ -24,7 +33,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 3,
+      id: 4,
       title: "Plataforma E-commerce",
       client: "Loja de Moda",
       type: "Web App",
@@ -32,7 +41,7 @@ const Projects = () => {
       status: "Em andamento",
     },
     {
-      id: 4,
+      id: 5,
       title: "Sistema de Gestão Escolar",
       client: "Rede de Ensino",
       type: "Web App",
@@ -40,20 +49,12 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 5,
+      id: 6,
       title: "App Financeiro",
       client: "Fintech",
       type: "Mobile App",
       image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80",
       status: "Lançamento",
-    },
-    {
-      id: 6,
-      title: "Dashboard Analytics",
-      client: "Empresa de Marketing",
-      type: "Web App",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-      status: "Em andamento",
     },
   ];
 
@@ -154,13 +155,28 @@ const Projects = () => {
                     {project.type}
                   </div>
                 </div>
-                <button className="flex items-center gap-2 text-primary font-semibold text-sm group/btn">
-                  Ver detalhes
-                  <ArrowRight
-                    size={16}
-                    className="group-hover/btn:translate-x-1 transition-transform duration-300"
-                  />
-                </button>
+                {project.link ? (
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-primary font-semibold text-sm group/btn"
+                  >
+                    Ver projeto
+                    <ExternalLink
+                      size={16}
+                      className="group-hover/btn:translate-x-1 transition-transform duration-300"
+                    />
+                  </a>
+                ) : (
+                  <button className="flex items-center gap-2 text-primary font-semibold text-sm group/btn">
+                    Ver detalhes
+                    <ArrowRight
+                      size={16}
+                      className="group-hover/btn:translate-x-1 transition-transform duration-300"
+                    />
+                  </button>
+                )}
               </div>
             </div>
           ))}
