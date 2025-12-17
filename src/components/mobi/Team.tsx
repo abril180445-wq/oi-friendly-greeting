@@ -11,28 +11,7 @@ const Team = () => {
       name: "Emerson Cordeiro",
       role: "CEO & Founder",
       image: emersonPhoto,
-      bio: "Fundador e visionário por trás da Rorschach Motion.",
-      social: { linkedin: "#", github: "#", twitter: "#" },
-    },
-    {
-      name: "Marina Santos",
-      role: "CTO",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&q=80",
-      bio: "Especialista em arquitetura de sistemas e cloud computing.",
-      social: { linkedin: "#", github: "#", twitter: "#" },
-    },
-    {
-      name: "Rafael Costa",
-      role: "Lead Developer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80",
-      bio: "Full-stack developer apaixonado por código limpo.",
-      social: { linkedin: "#", github: "#", twitter: "#" },
-    },
-    {
-      name: "Juliana Mendes",
-      role: "UI/UX Designer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80",
-      bio: "Criando experiências digitais memoráveis há 7 anos.",
+      bio: "Fundador e visionário por trás da Rorschach Motion. Apaixonado por tecnologia e inovação.",
       social: { linkedin: "#", github: "#", twitter: "#" },
     },
   ];
@@ -69,11 +48,11 @@ const Team = () => {
         </div>
 
         {/* Team grid */}
-        <div ref={gridAnimation.ref} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={gridAnimation.ref} className="flex justify-center">
           {team.map((member, index) => (
             <div
               key={member.name}
-              className={`group glass-dark border-gradient rounded-2xl overflow-hidden card-hover transition-all duration-500 ${
+              className={`group glass-dark border-gradient rounded-2xl overflow-hidden card-hover transition-all duration-500 w-full max-w-sm ${
                 gridAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
