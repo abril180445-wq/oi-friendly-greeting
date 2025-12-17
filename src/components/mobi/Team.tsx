@@ -1,6 +1,5 @@
 import { Github, Linkedin, Twitter, Users2 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import emersonPhoto from "@/assets/emerson-cordeiro.jpeg";
 
 const Team = () => {
   const headerAnimation = useScrollAnimation();
@@ -10,7 +9,7 @@ const Team = () => {
     {
       name: "Emerson Cordeiro",
       role: "CEO & Founder",
-      image: emersonPhoto,
+      image: "/images/emerson-cordeiro.jpeg",
       bio: "Fundador e visionário por trás da Rorschach Motion. Apaixonado por tecnologia e inovação.",
       social: { linkedin: "#", github: "#", twitter: "#" },
     },
