@@ -37,10 +37,11 @@ const About = () => {
   ];
 
   return (
-    <section id="sobre" className="section-padding bg-background relative overflow-hidden">
+    <section id="sobre" className="section-padding bg-background relative overflow-hidden mesh-gradient">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full dots-pattern opacity-50" />
-      <div className="absolute top-1/2 -translate-y-1/2 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-[100px]" />
+      <div className="absolute top-0 right-0 w-1/2 h-full dots-pattern opacity-40" />
+      <div className="absolute top-1/2 -translate-y-1/2 -left-40 w-96 h-96 bg-primary/8 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-[100px]" />
 
       <div className="container-custom relative z-10">
         {/* Section header */}
@@ -79,7 +80,7 @@ const About = () => {
                 : "opacity-0 -translate-x-10"
             }`}
           >
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden border-gradient group">
+            <div className="aspect-[4/3] rounded-3xl overflow-hidden border-gradient group card-shine">
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
                 alt="Equipe Rorschach Motion"
@@ -87,14 +88,15 @@ const About = () => {
               />
             </div>
             {/* Floating badge */}
-            <div className="absolute -bottom-6 -right-6 glass rounded-2xl p-6 shadow-card hidden md:block animate-pulse-glow">
-              <p className="font-heading text-4xl font-bold text-gradient">8+</p>
+            <div className="absolute -bottom-6 -right-6 glass rounded-2xl p-6 shadow-card hidden md:block animate-pulse-glow border border-primary/20">
+              <p className="font-heading text-4xl font-bold text-gradient glow-text">8+</p>
               <p className="text-muted-foreground text-sm font-medium">
                 Anos de experiência
               </p>
             </div>
             {/* Decorative element */}
-            <div className="absolute -top-6 -left-6 w-20 h-20 border-2 border-primary/30 rounded-2xl hidden md:block animate-pulse" />
+            <div className="absolute -top-6 -left-6 w-20 h-20 border-2 border-primary/30 rounded-2xl hidden md:block animate-float" />
+            <div className="absolute top-1/2 -left-3 w-6 h-6 bg-primary/30 rounded-full blur-sm hidden md:block" />
           </div>
 
           {/* Content */}
@@ -135,15 +137,15 @@ const About = () => {
           {values.map((value, index) => (
             <div
               key={index}
-              className={`group glass border-gradient rounded-2xl p-8 text-center card-hover transition-all duration-500 ${
+              className={`group glass border-gradient rounded-2xl p-8 text-center card-hover card-shine border-glow transition-all duration-500 ${
                 valuesAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
               style={valuesAnimation.getDelayClass(index)}
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-500">
-                <value.icon className="text-primary" size={28} />
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
+                <value.icon className="text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" size={28} />
               </div>
               <h4 className="font-heading text-xl font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">
                 {value.title}

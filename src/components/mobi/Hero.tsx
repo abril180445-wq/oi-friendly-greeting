@@ -19,11 +19,11 @@ const StatCard = ({
   return (
     <div
       ref={ref}
-      className="glass-dark rounded-2xl p-6 flex items-center gap-5 card-hover animate-fade-up group"
+      className="glass-dark rounded-2xl p-6 flex items-center gap-5 card-hover card-shine animate-fade-up group border-glow"
       style={{ animationDelay: `${(index + 3) * 100}ms` }}
     >
-      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-500">
-        <Icon className="text-primary" size={28} />
+      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
+        <Icon className="text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" size={28} />
       </div>
       <div>
         <p className="font-heading text-4xl font-bold text-foreground group-hover:text-gradient transition-all duration-300">
@@ -81,24 +81,25 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden animated-gradient noise"
+      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden animated-gradient noise mesh-gradient"
     >
       {/* Animated Background Effects */}
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <div className="absolute inset-0 grid-pattern opacity-20" />
       <div
-        className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px]"
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary/15 rounded-full blur-[180px]"
         style={{
-          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-          transition: "transform 0.3s ease-out",
+          transform: `translate(${mousePosition.x * 1.5}px, ${mousePosition.y * 1.5}px)`,
+          transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       />
       <div
-        className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-500/15 rounded-full blur-[120px]"
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]"
         style={{
-          transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)`,
-          transition: "transform 0.3s ease-out",
+          transform: `translate(${-mousePosition.x * 1.2}px, ${-mousePosition.y * 1.2}px)`,
+          transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px] animate-pulse" />
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -120,16 +121,16 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 animate-fade-up backdrop-blur-sm">
-              <Sparkles size={16} className="text-primary animate-pulse" />
-              <span className="text-primary font-medium text-sm tracking-wide">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/25 mb-8 animate-fade-up backdrop-blur-md shadow-inner shadow-primary/5">
+              <Sparkles size={16} className="text-primary animate-pulse drop-shadow-[0_0_4px_hsl(var(--primary))]" />
+              <span className="text-primary font-semibold text-sm tracking-wide">
                 Desenvolvimento de Sistemas
               </span>
             </div>
 
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-8 leading-[1.1] animate-fade-up animation-delay-100">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-8 leading-[1.1] animate-fade-up animation-delay-100 text-shadow-sm">
               Transformamos suas{" "}
-              <span className="text-gradient relative">
+              <span className="text-gradient glow-text relative">
                 ideias
                 <svg
                   className="absolute -bottom-2 left-0 w-full"
@@ -141,12 +142,12 @@ const Hero = () => {
                     stroke="hsl(var(--primary))"
                     strokeWidth="3"
                     strokeLinecap="round"
-                    className="animate-draw-line"
+                    className="animate-draw-line drop-shadow-[0_0_8px_hsl(var(--primary))]"
                   />
                 </svg>
               </span>{" "}
               em{" "}
-              <span className="text-gradient">soluções digitais</span>
+              <span className="text-gradient glow-text">soluções digitais</span>
             </h1>
 
             <p className="text-muted-foreground text-lg md:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up animation-delay-200">

@@ -72,11 +72,12 @@ const Projects = () => {
   };
 
   return (
-    <section id="projetos" className="section-padding bg-secondary relative overflow-hidden noise">
+    <section id="projetos" className="section-padding bg-secondary relative overflow-hidden noise mesh-gradient">
       {/* Background Effects */}
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-      <div className="absolute top-1/2 -translate-y-1/2 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-[100px]" />
+      <div className="absolute inset-0 grid-pattern opacity-15" />
+      <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-[120px]" />
+      <div className="absolute top-0 left-1/3 w-64 h-64 bg-primary/5 rounded-full blur-[100px]" />
 
       <div className="container-custom relative z-10">
         {/* Section header */}
@@ -108,7 +109,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`group glass-dark rounded-2xl overflow-hidden card-hover transition-all duration-500 ${
+              className={`group glass-dark rounded-2xl overflow-hidden card-hover card-shine border-glow transition-all duration-500 ${
                 gridAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -122,10 +123,10 @@ const Projects = () => {
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/30 to-transparent" />
                 <div className="absolute top-4 right-4">
                   <span
-                    className={`px-3 py-1.5 rounded-full text-xs font-semibold border backdrop-blur-sm ${getStatusColor(
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold border backdrop-blur-md shadow-lg ${getStatusColor(
                       project.status
                     )}`}
                   >
@@ -133,9 +134,9 @@ const Projects = () => {
                   </span>
                 </div>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/30 scale-0 group-hover:scale-100 transition-transform duration-500">
-                    <ExternalLink className="text-primary" size={20} />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/30 backdrop-blur-md flex items-center justify-center border border-primary/40 scale-0 group-hover:scale-100 transition-transform duration-500 shadow-glow">
+                    <ExternalLink className="text-foreground" size={22} />
                   </div>
                 </div>
               </div>
