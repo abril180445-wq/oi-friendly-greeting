@@ -72,7 +72,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group glass border-gradient rounded-3xl p-8 transition-all duration-500 card-hover ${
+              className={`group glass border-gradient rounded-3xl p-8 transition-all duration-500 card-hover card-shine border-glow ${
                 gridAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -82,10 +82,10 @@ const Services = () => {
               <div className="flex items-start gap-6">
                 {/* Icon */}
                 <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} p-0.5 flex-shrink-0`}
+                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} p-0.5 flex-shrink-0 group-hover:shadow-lg group-hover:scale-105 transition-all duration-500`}
                 >
                   <div className="w-full h-full rounded-2xl bg-background/90 flex items-center justify-center group-hover:bg-background/70 transition-colors duration-300">
-                    <service.icon className="text-foreground" size={28} />
+                    <service.icon className="text-foreground group-hover:scale-110 transition-transform duration-300" size={28} />
                   </div>
                 </div>
 
@@ -103,14 +103,14 @@ const Services = () => {
                     {service.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full"
+                        className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-border/30 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
                       >
                         {feature}
                       </span>
                     ))}
                   </div>
 
-                  <button className="flex items-center gap-2 text-primary font-semibold text-sm group/btn">
+                  <button className="flex items-center gap-2 text-primary font-semibold text-sm group/btn hover:gap-3 transition-all duration-300">
                     Saiba mais
                     <ArrowRight
                       size={16}

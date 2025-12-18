@@ -63,11 +63,12 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contato" className="section-padding bg-background relative overflow-hidden">
+    <section id="contato" className="section-padding bg-background relative overflow-hidden mesh-gradient">
       {/* Background decoration */}
-      <div className="absolute bottom-0 left-0 w-1/2 h-full dots-pattern opacity-50" />
-      <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px]" />
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-[80px]" />
+      <div className="absolute bottom-0 left-0 w-1/2 h-full dots-pattern opacity-40" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/8 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-500/5 rounded-full blur-[100px]" />
+      <div className="absolute top-0 right-1/3 w-48 h-48 bg-primary/5 rounded-full blur-[80px]" />
 
       <div className="container-custom relative z-10">
         {/* Section header */}
@@ -98,7 +99,7 @@ const Contact = () => {
           {/* Contact form */}
           <div
             ref={formAnimation.ref}
-            className={`glass border-gradient rounded-3xl p-8 md:p-10 transition-all duration-700 ${
+            className={`glass border-gradient rounded-3xl p-8 md:p-10 card-shine border-glow transition-all duration-700 ${
               formAnimation.isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-10"
@@ -233,11 +234,11 @@ const Contact = () => {
                 <a
                   key={index}
                   href={item.link}
-                  className="flex items-center gap-4 p-4 rounded-2xl hover:bg-muted/50 transition-all duration-300 group border border-transparent hover:border-primary/20"
+                  className="flex items-center gap-4 p-4 rounded-2xl hover:bg-muted/50 transition-all duration-300 group border border-transparent hover:border-primary/20 hover-lift"
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20 group-hover:scale-110 group-hover:border-primary/40 transition-all duration-300">
-                    <item.icon className="text-primary" size={22} />
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/25 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-300">
+                    <item.icon className="text-primary group-hover:drop-shadow-[0_0_6px_hsl(var(--primary))]" size={22} />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">{item.title}</p>
@@ -250,7 +251,7 @@ const Contact = () => {
             </div>
 
             {/* Map */}
-            <div className="aspect-video rounded-2xl overflow-hidden border border-border/50 group">
+            <div className="aspect-video rounded-2xl overflow-hidden border border-border/50 group shadow-elevated">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1976517594613!2d-46.65390692374868!3d-23.56190776123698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1702000000000!5m2!1spt-BR!2sbr"
                 width="100%"
@@ -260,7 +261,7 @@ const Contact = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Localização Rorschach Motion"
-                className="grayscale group-hover:grayscale-0 transition-all duration-700"
+                className="grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
             </div>
           </div>
