@@ -1,10 +1,14 @@
-import { ChevronDown, HelpCircle } from "lucide-react";
-import { useState } from "react";
+import { HelpCircle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const FAQ = () => {
   const headerAnimation = useScrollAnimation();
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
@@ -65,53 +69,44 @@ const FAQ = () => {
             Perguntas <span className="text-gradient">Frequentes</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-            Tire suas dúvidas sobre nossos serviços, processos e formas de trabalho.
+            Tire suas dúvidas sobre nossos serviços, processos e formas de
+            trabalho.
           </p>
         </div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        <Accordion
+          type="single"
+          collapsible
+          defaultValue="item-0"
+          className="max-w-3xl mx-auto space-y-4"
+        >
           {faqs.map((faq, index) => (
-            <div
+            <AccordionItem
               key={index}
-              className={`glass border-gradient rounded-2xl overflow-hidden transition-all duration-500 ${
+              value={`item-${index}`}
+              className={`glass border-gradient rounded-2xl overflow-hidden transition-all duration-500 border-b-0 ${
                 headerAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 75}ms` }}
             >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left group"
-              >
+              <AccordionTrigger className="p-6 text-left group hover:no-underline [&>svg]:text-primary [&>svg]:h-5 [&>svg]:w-5">
                 <span className="font-heading font-semibold text-foreground pr-4 group-hover:text-primary transition-colors duration-300">
                   {faq.question}
                 </span>
-                <ChevronDown
-                  size={20}
-                  className={`text-primary flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <div
-                className={`grid transition-all duration-500 ease-in-out ${
-                  openIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              </div>
-            </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-6 pt-0 text-muted-foreground leading-relaxed">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </section>
   );
 };
 
 export default FAQ;
+
