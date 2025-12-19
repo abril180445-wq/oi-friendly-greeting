@@ -96,13 +96,15 @@ const FAQ = () => {
                 />
               </button>
               <div
-                className={`overflow-hidden transition-all duration-500 ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
+                className={`grid transition-all duration-500 ease-in-out ${
+                  openIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}
               >
-                <p className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </p>
+                <div className="overflow-hidden">
+                  <p className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
