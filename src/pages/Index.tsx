@@ -26,11 +26,11 @@ const Index = () => {
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-15"
+          className="w-full h-full object-cover opacity-30"
         >
           <source src="/videos/blog-background.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/70 to-background/80" />
       </div>
 
       <ScrollProgress />
