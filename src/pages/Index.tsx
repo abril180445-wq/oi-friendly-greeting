@@ -20,13 +20,13 @@ const Index = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Video Background */}
-      <div className="fixed inset-0 z-0">
+      <div className="fixed inset-0 z-0 overflow-hidden">
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-[120%] object-cover opacity-50 scale-110 -translate-y-[10%]"
         >
           <source src="/videos/blog-background.mp4" type="video/mp4" />
         </video>
