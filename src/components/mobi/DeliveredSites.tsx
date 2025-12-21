@@ -317,7 +317,7 @@ const DeliveredSites = () => {
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-2 right-2 z-[110] w-8 h-8 rounded-full bg-background/90 flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+                className="absolute -top-2 right-2 z-[110] w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white hover:bg-purple-600 transition-colors shadow-lg"
               >
                 <X size={16} />
               </button>
