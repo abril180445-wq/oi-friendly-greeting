@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Send, Wand2, Loader2 } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Settings, Save, Loader2, Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -27,6 +28,13 @@ type BlogPost = {
   created_at: string;
 };
 
+type SiteSettings = {
+  phone: string;
+  email: string;
+  address: string;
+  whatsapp: string;
+};
+
 const Admin = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -35,6 +43,13 @@ const Admin = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+  const [savingSettings, setSavingSettings] = useState(false);
+  const [siteSettings, setSiteSettings] = useState<SiteSettings>({
+    phone: '',
+    email: '',
+    address: '',
+    whatsapp: ''
+  });
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -76,7 +91,57 @@ const Admin = () => {
 
     setProfile(profileData);
     fetchPosts();
+    fetchSiteSettings();
     setLoading(false);
+  };
+
+  const fetchSiteSettings = async () => {
+    const { data, error } = await supabase
+      .from('site_settings')
+      .select('key, value');
+
+    if (!error && data) {
+      const settings: SiteSettings = {
+        phone: '',
+        email: '',
+        address: '',
+        whatsapp: ''
+      };
+      data.forEach((item) => {
+        if (item.key in settings) {
+          settings[item.key as keyof SiteSettings] = item.value || '';
+        }
+      });
+      setSiteSettings(settings);
+    }
+  };
+
+  const saveSiteSettings = async () => {
+    setSavingSettings(true);
+    
+    const keys = ['phone', 'email', 'address', 'whatsapp'] as const;
+    
+    for (const key of keys) {
+      const { data: existing } = await supabase
+        .from('site_settings')
+        .select('id')
+        .eq('key', key)
+        .maybeSingle();
+
+      if (existing) {
+        await supabase
+          .from('site_settings')
+          .update({ value: siteSettings[key], updated_at: new Date().toISOString() })
+          .eq('key', key);
+      } else {
+        await supabase
+          .from('site_settings')
+          .insert({ key, value: siteSettings[key] });
+      }
+    }
+    
+    setSavingSettings(false);
+    toast({ title: 'Configurações salvas!' });
   };
 
   const fetchPosts = async () => {
@@ -253,163 +318,248 @@ const Admin = () => {
       </header>
 
       <main className="container-custom py-8">
-        {/* Actions */}
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold">Artigos do Blog</h2>
-          <Button onClick={() => setShowForm(true)} className="gap-2">
-            <Plus size={16} />
-            Novo Artigo
-          </Button>
-        </div>
+        <Tabs defaultValue="blog" className="w-full">
+          <TabsList className="mb-8">
+            <TabsTrigger value="blog" className="gap-2">
+              <FileText size={16} />
+              Blog
+            </TabsTrigger>
+            <TabsTrigger value="settings" className="gap-2">
+              <Settings size={16} />
+              Configurações do Site
+            </TabsTrigger>
+          </TabsList>
 
-        {/* Form */}
-        {showForm && (
-          <div className="glass-card p-6 rounded-2xl mb-8">
-            <h3 className="text-lg font-semibold mb-4">
-              {editingPost ? 'Editar Artigo' : 'Novo Artigo'}
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium">Título</label>
-                  <Input
-                    value={formData.title}
-                    onChange={handleTitleChange}
-                    placeholder="Título do artigo"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Slug</label>
-                  <Input
-                    value={formData.slug}
-                    onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
-                    placeholder="url-do-artigo"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-medium">Categoria</label>
-                  <Input
-                    value={formData.category}
-                    onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
-                    placeholder="Ex: Desenvolvimento Web"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium">Tags (separadas por vírgula)</label>
-                  <Input
-                    value={formData.tags}
-                    onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
-                    placeholder="react, javascript, web"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-medium">URL da Imagem de Capa</label>
-                <Input
-                  value={formData.cover_image}
-                  onChange={(e) => setFormData(prev => ({ ...prev, cover_image: e.target.value }))}
-                  placeholder="https://..."
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium">Resumo</label>
-                <Textarea
-                  value={formData.excerpt}
-                  onChange={(e) => setFormData(prev => ({ ...prev, excerpt: e.target.value }))}
-                  placeholder="Um breve resumo do artigo..."
-                  rows={2}
-                />
-              </div>
-              <div>
-                <label className="text-sm font-medium">Conteúdo (HTML permitido)</label>
-                <Textarea
-                  value={formData.content}
-                  onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
-                  placeholder="<p>Conteúdo do artigo...</p>"
-                  rows={10}
-                  required
-                />
-              </div>
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="published"
-                  checked={formData.published}
-                  onChange={(e) => setFormData(prev => ({ ...prev, published: e.target.checked }))}
-                  className="rounded"
-                />
-                <label htmlFor="published" className="text-sm">Publicar imediatamente</label>
-              </div>
-              <div className="flex gap-3">
-                <Button type="submit">
-                  {editingPost ? 'Atualizar' : 'Criar'} Artigo
-                </Button>
-                <Button type="button" variant="ghost" onClick={resetForm}>
-                  Cancelar
-                </Button>
-              </div>
-            </form>
-          </div>
-        )}
-
-        {/* Posts List */}
-        <div className="space-y-4">
-          {posts.length === 0 ? (
-            <div className="text-center py-12 text-muted-foreground">
-              <FileText size={48} className="mx-auto mb-4 opacity-50" />
-              <p>Nenhum artigo ainda. Crie o primeiro!</p>
+          {/* Blog Tab */}
+          <TabsContent value="blog">
+            {/* Actions */}
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl font-semibold">Artigos do Blog</h2>
+              <Button onClick={() => setShowForm(true)} className="gap-2">
+                <Plus size={16} />
+                Novo Artigo
+              </Button>
             </div>
-          ) : (
-            posts.map((post) => (
-              <div
-                key={post.id}
-                className="glass-card p-4 rounded-xl flex items-center justify-between gap-4"
-              >
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-medium truncate">{post.title}</h3>
-                    <span className={`px-2 py-0.5 rounded-full text-xs ${post.published ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
-                      {post.published ? 'Publicado' : 'Rascunho'}
-                    </span>
+
+            {/* Form */}
+            {showForm && (
+              <div className="glass-card p-6 rounded-2xl mb-8">
+                <h3 className="text-lg font-semibold mb-4">
+                  {editingPost ? 'Editar Artigo' : 'Novo Artigo'}
+                </h3>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium">Título</label>
+                      <Input
+                        value={formData.title}
+                        onChange={handleTitleChange}
+                        placeholder="Título do artigo"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Slug</label>
+                      <Input
+                        value={formData.slug}
+                        onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
+                        placeholder="url-do-artigo"
+                        required
+                      />
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground truncate">
-                    /{post.slug} • {post.category}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => togglePublish(post)}
-                    title={post.published ? 'Despublicar' : 'Publicar'}
-                  >
-                    {post.published ? <EyeOff size={16} /> : <Eye size={16} />}
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => editPost(post)}
-                  >
-                    <Edit size={16} />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => deletePost(post.id)}
-                    className="text-destructive hover:text-destructive"
-                  >
-                    <Trash2 size={16} />
-                  </Button>
-                </div>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium">Categoria</label>
+                      <Input
+                        value={formData.category}
+                        onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
+                        placeholder="Ex: Desenvolvimento Web"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Tags (separadas por vírgula)</label>
+                      <Input
+                        value={formData.tags}
+                        onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
+                        placeholder="react, javascript, web"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">URL da Imagem de Capa</label>
+                    <Input
+                      value={formData.cover_image}
+                      onChange={(e) => setFormData(prev => ({ ...prev, cover_image: e.target.value }))}
+                      placeholder="https://..."
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Resumo</label>
+                    <Textarea
+                      value={formData.excerpt}
+                      onChange={(e) => setFormData(prev => ({ ...prev, excerpt: e.target.value }))}
+                      placeholder="Um breve resumo do artigo..."
+                      rows={2}
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium">Conteúdo (HTML permitido)</label>
+                    <Textarea
+                      value={formData.content}
+                      onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
+                      placeholder="<p>Conteúdo do artigo...</p>"
+                      rows={10}
+                      required
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="published"
+                      checked={formData.published}
+                      onChange={(e) => setFormData(prev => ({ ...prev, published: e.target.checked }))}
+                      className="rounded"
+                    />
+                    <label htmlFor="published" className="text-sm">Publicar imediatamente</label>
+                  </div>
+                  <div className="flex gap-3">
+                    <Button type="submit">
+                      {editingPost ? 'Atualizar' : 'Criar'} Artigo
+                    </Button>
+                    <Button type="button" variant="ghost" onClick={resetForm}>
+                      Cancelar
+                    </Button>
+                  </div>
+                </form>
               </div>
-            ))
-          )}
-        </div>
+            )}
+
+            {/* Posts List */}
+            <div className="space-y-4">
+              {posts.length === 0 ? (
+                <div className="text-center py-12 text-muted-foreground">
+                  <FileText size={48} className="mx-auto mb-4 opacity-50" />
+                  <p>Nenhum artigo ainda. Crie o primeiro!</p>
+                </div>
+              ) : (
+                posts.map((post) => (
+                  <div
+                    key={post.id}
+                    className="glass-card p-4 rounded-xl flex items-center justify-between gap-4"
+                  >
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="font-medium truncate">{post.title}</h3>
+                        <span className={`px-2 py-0.5 rounded-full text-xs ${post.published ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'}`}>
+                          {post.published ? 'Publicado' : 'Rascunho'}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground truncate">
+                        /{post.slug} • {post.category}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => togglePublish(post)}
+                        title={post.published ? 'Despublicar' : 'Publicar'}
+                      >
+                        {post.published ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => editPost(post)}
+                      >
+                        <Edit size={16} />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => deletePost(post.id)}
+                        className="text-destructive hover:text-destructive"
+                      >
+                        <Trash2 size={16} />
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </TabsContent>
+
+          {/* Settings Tab */}
+          <TabsContent value="settings">
+            <div className="max-w-2xl">
+              <h2 className="text-2xl font-semibold mb-6">Configurações do Site</h2>
+              
+              <div className="glass-card p-6 rounded-2xl space-y-6">
+                <div>
+                  <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <Phone size={16} className="text-primary" />
+                    Telefone
+                  </label>
+                  <Input
+                    value={siteSettings.phone}
+                    onChange={(e) => setSiteSettings(prev => ({ ...prev, phone: e.target.value }))}
+                    placeholder="(11) 99999-9999"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <MessageCircle size={16} className="text-primary" />
+                    WhatsApp
+                  </label>
+                  <Input
+                    value={siteSettings.whatsapp}
+                    onChange={(e) => setSiteSettings(prev => ({ ...prev, whatsapp: e.target.value }))}
+                    placeholder="5511999999999"
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">Formato: código do país + DDD + número (sem espaços)</p>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <Mail size={16} className="text-primary" />
+                    Email
+                  </label>
+                  <Input
+                    value={siteSettings.email}
+                    onChange={(e) => setSiteSettings(prev => ({ ...prev, email: e.target.value }))}
+                    placeholder="contato@seusite.com"
+                    type="email"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <MapPin size={16} className="text-primary" />
+                    Endereço
+                  </label>
+                  <Textarea
+                    value={siteSettings.address}
+                    onChange={(e) => setSiteSettings(prev => ({ ...prev, address: e.target.value }))}
+                    placeholder="Rua Exemplo, 123 - Bairro - Cidade/UF"
+                    rows={2}
+                  />
+                </div>
+
+                <Button onClick={saveSiteSettings} disabled={savingSettings} className="gap-2">
+                  {savingSettings ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <Save size={16} />
+                  )}
+                  Salvar Configurações
+                </Button>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </main>
     </div>
   );
