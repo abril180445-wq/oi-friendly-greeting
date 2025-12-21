@@ -114,7 +114,12 @@ const Header = () => {
                 </a>
               )
             ))}
-            <Button className="ml-4 btn-premium text-primary-foreground font-semibold px-6 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300">
+            <Button 
+              className="ml-4 btn-premium text-primary-foreground font-semibold px-6 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300"
+              onClick={() => {
+                document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               <span>Solicite um Orçamento</span>
             </Button>
           </div>
@@ -156,7 +161,13 @@ const Header = () => {
             </div>
 
             <div className="border-t border-white/10 px-2 py-1.5 flex items-center justify-center">
-              <Button className="btn-premium text-primary-foreground font-medium rounded-lg py-1.5 px-4 text-xs h-auto w-full">
+              <Button 
+                className="btn-premium text-primary-foreground font-medium rounded-lg py-1.5 px-4 text-xs h-auto w-full"
+                onClick={() => {
+                  document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMenuOpen(false);
+                }}
+              >
                 Orçamento
               </Button>
             </div>
