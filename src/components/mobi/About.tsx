@@ -177,11 +177,11 @@ const About = () => {
         {/* Diploma Modal */}
         {showDiploma && (
           <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 animate-fade-in"
+            className="fixed inset-0 z-[100] flex items-end justify-center pb-12 pt-20 px-4 bg-black/25 animate-fade-in"
             onClick={() => setShowDiploma(false)}
           >
             <div 
-              className="relative bg-black/70 backdrop-blur-sm p-3 rounded-xl animate-scale-in"
+              className="relative bg-black/40 backdrop-blur-sm p-2 rounded-xl animate-scale-in"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -193,7 +193,7 @@ const About = () => {
               <img 
                 src={diplomaImage} 
                 alt="Diploma SENAI - Técnico em Desenvolvimento de Sistemas"
-                className="w-auto h-auto max-h-[60vh] max-w-[90vw] md:max-w-lg object-contain rounded-lg"
+                className="w-auto h-auto max-h-[75vh] max-w-[95vw] md:max-w-2xl object-contain rounded-lg"
               />
             </div>
           </div>
