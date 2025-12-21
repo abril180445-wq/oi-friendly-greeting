@@ -144,12 +144,11 @@
 
   /* Mobile menu surface (glass effect over video) */
   .menu-surface {
-    @apply backdrop-blur-2xl border border-white/20 rounded-2xl overflow-hidden;
-    background: hsl(0 0% 100% / 0.12);
+    @apply backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden;
+    background: hsl(0 0% 100% / 0.05);
     box-shadow: 
-      0 20px 60px -20px hsl(0 0% 0% / 0.4),
-      inset 0 1px 0 hsl(0 0% 100% / 0.2),
-      inset 0 -1px 0 hsl(0 0% 100% / 0.05);
+      0 20px 60px -20px hsl(0 0% 0% / 0.3),
+      inset 0 1px 0 hsl(0 0% 100% / 0.1);
   }
 
   .menu-link {
@@ -157,7 +156,7 @@
   }
 
   .menu-link:hover {
-    background: hsl(0 0% 100% / 0.1);
+    background: hsl(0 0% 100% / 0.08);
   }
 
   .glass-dark {
