@@ -29,6 +29,15 @@ const Projects = () => {
     },
     {
       id: 3,
+      title: "AgendaGlas - Sistema de Agendamento",
+      client: "Barbearia / Salão",
+      type: "Web App",
+      image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80",
+      status: "Entregue",
+      link: "https://agendaglas.lovable.app",
+    },
+    {
+      id: 4,
       title: "Sistema ERP Completo",
       client: "Indústria Têxtil",
       type: "Web App",
@@ -36,7 +45,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 4,
+      id: 5,
       title: "App de Delivery",
       client: "Rede de Restaurantes",
       type: "Mobile App",
@@ -44,7 +53,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 5,
+      id: 6,
       title: "Plataforma E-commerce",
       client: "Loja de Moda",
       type: "Web App",
@@ -52,7 +61,7 @@ const Projects = () => {
       status: "Em andamento",
     },
     {
-      id: 6,
+      id: 7,
       title: "Sistema de Gestão Escolar",
       client: "Rede de Ensino",
       type: "Web App",
@@ -60,7 +69,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 7,
+      id: 8,
       title: "App Financeiro",
       client: "Fintech",
       type: "Mobile App",
