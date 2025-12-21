@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "@/components/mobi/Header";
 import Hero from "@/components/mobi/Hero";
 import Clients from "@/components/mobi/Clients";
@@ -16,10 +17,21 @@ import WhatsAppButton from "@/components/mobi/WhatsAppButton";
 import ChatBot from "@/components/mobi/ChatBot";
 import ScrollProgress from "@/components/mobi/ScrollProgress";
 import FloatingElements from "@/components/mobi/FloatingElements";
+import CustomCursor from "@/components/mobi/CustomCursor";
+import LoadingScreen from "@/components/mobi/LoadingScreen";
+import Timeline from "@/components/mobi/Timeline";
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
+  }
+
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <CustomCursor />
+      
       {/* Video Background */}
       <div className="fixed inset-0 z-0 overflow-hidden">
         <video
@@ -44,6 +56,7 @@ const Index = () => {
         <Services />
         <Process />
         <Technologies />
+        <Timeline />
         <Projects />
         <DeliveredSites />
         <Team />
