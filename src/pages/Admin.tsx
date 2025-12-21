@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Settings, Save, Loader2, Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Linkedin, Youtube, Globe, Bot } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Settings, Save, Loader2, Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Linkedin, Youtube, Globe, Bot, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -54,6 +54,7 @@ const Admin = () => {
   const [showForm, setShowForm] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [savingSettings, setSavingSettings] = useState(false);
+  const [sendingBackup, setSendingBackup] = useState(false);
   const [siteSettings, setSiteSettings] = useState<SiteSettings>({
     phone: '',
     email: '',
@@ -166,6 +167,39 @@ const Admin = () => {
     
     setSavingSettings(false);
     toast({ title: 'Configurações salvas!' });
+  };
+
+  const sendBackup = async () => {
+    if (!siteSettings.email) {
+      toast({ 
+        title: 'Email não configurado', 
+        description: 'Configure o email nas configurações antes de enviar o backup.',
+        variant: 'destructive' 
+      });
+      return;
+    }
+
+    setSendingBackup(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-backup');
+      
+      if (error) throw error;
+      
+      toast({ 
+        title: 'Backup enviado!', 
+        description: `O backup foi enviado para ${siteSettings.email}` 
+      });
+    } catch (error: any) {
+      console.error('Backup error:', error);
+      toast({ 
+        title: 'Erro ao enviar backup', 
+        description: error.message,
+        variant: 'destructive' 
+      });
+    } finally {
+      setSendingBackup(false);
+    }
   };
 
   const fetchPosts = async () => {
@@ -671,14 +705,30 @@ const Admin = () => {
                   />
                 </div>
 
-                <Button onClick={saveSiteSettings} disabled={savingSettings} className="gap-2">
-                  {savingSettings ? (
-                    <Loader2 size={16} className="animate-spin" />
-                  ) : (
-                    <Save size={16} />
-                  )}
-                  Salvar Configurações
-                </Button>
+                <div className="flex gap-3">
+                  <Button onClick={saveSiteSettings} disabled={savingSettings} className="gap-2">
+                    {savingSettings ? (
+                      <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                      <Save size={16} />
+                    )}
+                    Salvar Configurações
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    onClick={sendBackup} 
+                    disabled={sendingBackup} 
+                    className="gap-2"
+                  >
+                    {sendingBackup ? (
+                      <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                      <Download size={16} />
+                    )}
+                    Enviar Backup por Email
+                  </Button>
+                </div>
               </div>
             </div>
           </TabsContent>
