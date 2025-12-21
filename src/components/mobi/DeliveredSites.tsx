@@ -92,7 +92,7 @@ const DeliveredSites = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-10" />
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px]" />
 
       <div className="container-custom relative z-10">
         {/* Section header */}

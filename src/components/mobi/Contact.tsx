@@ -69,7 +69,7 @@ const Contact = () => {
       {/* Background decoration */}
       <div className="absolute bottom-0 left-0 w-1/2 h-full dots-pattern opacity-40" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/8 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-500/5 rounded-full blur-[100px]" />
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500/5 rounded-full blur-[100px]" />
       <div className="absolute top-0 right-1/3 w-48 h-48 bg-primary/5 rounded-full blur-[80px]" />
 
       <div className="container-custom relative z-10">
@@ -239,7 +239,7 @@ const Contact = () => {
                   className="flex items-center gap-4 p-4 rounded-2xl hover:bg-muted/50 transition-all duration-300 group border border-transparent hover:border-primary/20 hover-lift"
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/25 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-300">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/25 to-purple-500/25 flex items-center justify-center border border-primary/25 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-300">
                     <item.icon className="text-primary group-hover:drop-shadow-[0_0_6px_hsl(var(--primary))]" size={22} />
                   </div>
                   <div>

@@ -22,7 +22,7 @@ const StatCard = ({
       className="glass-dark rounded-2xl p-6 flex items-center gap-5 card-hover card-shine animate-fade-up group border-glow"
       style={{ animationDelay: `${(index + 3) * 100}ms` }}
     >
-      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
+      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/25 to-purple-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
         <Icon className="text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" size={28} />
       </div>
       <div>
@@ -93,7 +93,7 @@ const Hero = () => {
         }}
       />
       <div
-        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[150px]"
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[150px]"
         style={{
           transform: `translate(${-mousePosition.x * 1.2}px, ${-mousePosition.y * 1.2}px)`,
           transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
