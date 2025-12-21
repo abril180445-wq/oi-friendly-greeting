@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Settings, Save, Loader2, Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Settings, Save, Loader2, Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Linkedin, Youtube, Globe, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -33,6 +33,13 @@ type SiteSettings = {
   email: string;
   address: string;
   whatsapp: string;
+  instagram: string;
+  facebook: string;
+  linkedin: string;
+  youtube: string;
+  website: string;
+  chatbot_enabled: string;
+  chatbot_greeting: string;
 };
 
 const Admin = () => {
@@ -48,7 +55,14 @@ const Admin = () => {
     phone: '',
     email: '',
     address: '',
-    whatsapp: ''
+    whatsapp: '',
+    instagram: '',
+    facebook: '',
+    linkedin: '',
+    youtube: '',
+    website: '',
+    chatbot_enabled: 'true',
+    chatbot_greeting: 'Olá! Como posso ajudar você hoje?'
   });
   const [formData, setFormData] = useState({
     title: '',
@@ -105,7 +119,14 @@ const Admin = () => {
         phone: '',
         email: '',
         address: '',
-        whatsapp: ''
+        whatsapp: '',
+        instagram: '',
+        facebook: '',
+        linkedin: '',
+        youtube: '',
+        website: '',
+        chatbot_enabled: 'true',
+        chatbot_greeting: 'Olá! Como posso ajudar você hoje?'
       };
       data.forEach((item) => {
         if (item.key in settings) {
@@ -119,7 +140,7 @@ const Admin = () => {
   const saveSiteSettings = async () => {
     setSavingSettings(true);
     
-    const keys = ['phone', 'email', 'address', 'whatsapp'] as const;
+    const keys: (keyof SiteSettings)[] = ['phone', 'email', 'address', 'whatsapp', 'instagram', 'facebook', 'linkedin', 'youtube', 'website', 'chatbot_enabled', 'chatbot_greeting'];
     
     for (const key of keys) {
       const { data: existing } = await supabase
@@ -544,6 +565,109 @@ const Admin = () => {
                     value={siteSettings.address}
                     onChange={(e) => setSiteSettings(prev => ({ ...prev, address: e.target.value }))}
                     placeholder="Rua Exemplo, 123 - Bairro - Cidade/UF"
+                    rows={2}
+                  />
+                </div>
+
+                {/* Separator */}
+                <div className="border-t border-border pt-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Globe size={18} className="text-primary" />
+                    Redes Sociais
+                  </h3>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                      <Instagram size={16} className="text-pink-500" />
+                      Instagram
+                    </label>
+                    <Input
+                      value={siteSettings.instagram}
+                      onChange={(e) => setSiteSettings(prev => ({ ...prev, instagram: e.target.value }))}
+                      placeholder="https://instagram.com/seuusuario"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                      <Facebook size={16} className="text-blue-600" />
+                      Facebook
+                    </label>
+                    <Input
+                      value={siteSettings.facebook}
+                      onChange={(e) => setSiteSettings(prev => ({ ...prev, facebook: e.target.value }))}
+                      placeholder="https://facebook.com/suapagina"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                      <Linkedin size={16} className="text-blue-700" />
+                      LinkedIn
+                    </label>
+                    <Input
+                      value={siteSettings.linkedin}
+                      onChange={(e) => setSiteSettings(prev => ({ ...prev, linkedin: e.target.value }))}
+                      placeholder="https://linkedin.com/company/suaempresa"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                      <Youtube size={16} className="text-red-600" />
+                      YouTube
+                    </label>
+                    <Input
+                      value={siteSettings.youtube}
+                      onChange={(e) => setSiteSettings(prev => ({ ...prev, youtube: e.target.value }))}
+                      placeholder="https://youtube.com/@seucanal"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    <Globe size={16} className="text-primary" />
+                    Website / Portfólio
+                  </label>
+                  <Input
+                    value={siteSettings.website}
+                    onChange={(e) => setSiteSettings(prev => ({ ...prev, website: e.target.value }))}
+                    placeholder="https://seusite.com"
+                  />
+                </div>
+
+                {/* AI Settings */}
+                <div className="border-t border-border pt-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Bot size={18} className="text-primary" />
+                    Chatbot IA
+                  </h3>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    id="chatbot_enabled"
+                    checked={siteSettings.chatbot_enabled === 'true'}
+                    onChange={(e) => setSiteSettings(prev => ({ ...prev, chatbot_enabled: e.target.checked ? 'true' : 'false' }))}
+                    className="rounded"
+                  />
+                  <label htmlFor="chatbot_enabled" className="text-sm font-medium">
+                    Ativar Chatbot no site
+                  </label>
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium flex items-center gap-2 mb-2">
+                    Mensagem de boas-vindas do Chatbot
+                  </label>
+                  <Textarea
+                    value={siteSettings.chatbot_greeting}
+                    onChange={(e) => setSiteSettings(prev => ({ ...prev, chatbot_greeting: e.target.value }))}
+                    placeholder="Olá! Como posso ajudar você hoje?"
                     rows={2}
                   />
                 </div>
