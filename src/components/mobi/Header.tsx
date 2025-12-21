@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -115,7 +114,6 @@ const Header = () => {
                 </a>
               )
             ))}
-            <ThemeToggle />
             <Button className="ml-4 btn-premium text-primary-foreground font-semibold px-6 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300">
               <span>Solicite um Orçamento</span>
             </Button>
@@ -157,9 +155,8 @@ const Header = () => {
               )}
             </div>
 
-            <div className="border-t border-white/10 px-2 py-1.5 flex items-center justify-between">
-              <ThemeToggle />
-              <Button className="btn-premium text-primary-foreground font-medium rounded-lg py-1.5 px-4 text-xs h-auto">
+            <div className="border-t border-white/10 px-2 py-1.5 flex items-center justify-center">
+              <Button className="btn-premium text-primary-foreground font-medium rounded-lg py-1.5 px-4 text-xs h-auto w-full">
                 Orçamento
               </Button>
             </div>
