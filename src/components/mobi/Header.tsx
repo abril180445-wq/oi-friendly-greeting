@@ -132,14 +132,14 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute left-4 right-4 top-full mt-2 menu-surface shadow-elevated animate-fade-in z-50">
-            <div className="flex flex-col p-1.5">
+          <div className="md:hidden absolute left-4 right-4 top-full mt-1 menu-surface shadow-lg animate-fade-in z-50 rounded-lg">
+            <div className="flex flex-wrap gap-1 p-1.5">
               {navLinks.map((link) =>
                 link.isRoute ? (
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="menu-link hover:text-primary"
+                    className="px-2.5 py-1.5 text-xs font-medium text-white/90 hover:text-primary hover:bg-white/5 rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
@@ -148,7 +148,7 @@ const Header = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="menu-link hover:text-primary"
+                    className="px-2.5 py-1.5 text-xs font-medium text-white/90 hover:text-primary hover:bg-white/5 rounded-md transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
@@ -157,13 +157,10 @@ const Header = () => {
               )}
             </div>
 
-            <div className="border-t border-white/10 p-3 flex flex-col gap-2">
-              <div className="flex items-center justify-between px-2">
-                <span className="text-xs text-white/70">Tema</span>
-                <ThemeToggle />
-              </div>
-              <Button className="btn-premium text-primary-foreground font-semibold w-full rounded-lg py-2 text-sm">
-                <span>Solicite um Orçamento</span>
+            <div className="border-t border-white/10 p-1.5 flex items-center justify-between gap-2">
+              <ThemeToggle />
+              <Button className="btn-premium text-primary-foreground font-medium rounded-md py-1 px-3 text-xs h-7">
+                Orçamento
               </Button>
             </div>
           </div>
