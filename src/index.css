@@ -142,21 +142,22 @@
     box-shadow: 0 8px 32px hsl(var(--foreground) / 0.04), inset 0 1px 0 hsl(var(--foreground) / 0.02);
   }
 
-  /* Mobile menu surface (optimized for readability over video) */
+  /* Mobile menu surface (glass effect over video) */
   .menu-surface {
-    @apply backdrop-blur-xl border border-border/30 rounded-2xl overflow-hidden;
-    background: hsl(var(--menu-surface) / 0.92);
-    color: hsl(var(--menu-surface-foreground));
-    box-shadow: 0 20px 60px -20px hsl(0 0% 0% / 0.35);
+    @apply backdrop-blur-2xl border border-white/20 rounded-2xl overflow-hidden;
+    background: hsl(0 0% 100% / 0.12);
+    box-shadow: 
+      0 20px 60px -20px hsl(0 0% 0% / 0.4),
+      inset 0 1px 0 hsl(0 0% 100% / 0.2),
+      inset 0 -1px 0 hsl(0 0% 100% / 0.05);
   }
 
   .menu-link {
-    @apply px-4 py-3 rounded-xl font-medium transition-colors duration-200;
-    color: hsl(var(--menu-surface-foreground));
+    @apply px-4 py-3 rounded-xl font-medium transition-colors duration-200 text-white;
   }
 
   .menu-link:hover {
-    background: hsl(var(--menu-surface-foreground) / 0.06);
+    background: hsl(0 0% 100% / 0.1);
   }
 
   .glass-dark {
