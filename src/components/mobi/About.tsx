@@ -1,5 +1,6 @@
-import { CheckCircle, Target, Eye, Heart, Zap } from "lucide-react";
+import { CheckCircle, Target, Eye, Heart, Zap, GraduationCap } from "lucide-react";
 import { useScrollAnimation, useStaggerAnimation } from "@/hooks/useScrollAnimation";
+import DiplomaFrame from "./DiplomaFrame";
 
 const About = () => {
   const headerAnimation = useScrollAnimation();
@@ -132,27 +133,35 @@ const About = () => {
           </div>
         </div>
 
-        {/* Values */}
-        <div ref={valuesAnimation.ref} className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-          {values.map((value, index) => (
-            <div
-              key={index}
-              className={`group glass border-gradient rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center card-hover card-shine border-glow transition-all duration-500 ${
-                valuesAnimation.isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-              style={valuesAnimation.getDelayClass(index)}
-            >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
-                <value.icon className="text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" size={28} />
+        {/* Certification & Values */}
+        <div className="grid lg:grid-cols-4 gap-6 mb-12">
+          {/* Diploma Frame */}
+          <div className="lg:col-span-1">
+            <DiplomaFrame />
+          </div>
+
+          {/* Values */}
+          <div ref={valuesAnimation.ref} className="lg:col-span-3 grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+            {values.map((value, index) => (
+              <div
+                key={index}
+                className={`group glass border-gradient rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center card-hover card-shine border-glow transition-all duration-500 ${
+                  valuesAnimation.isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+                }`}
+                style={valuesAnimation.getDelayClass(index)}
+              >
+                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
+                  <value.icon className="text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" size={28} />
+                </div>
+                <h4 className="font-heading text-xl font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">
+                  {value.title}
+                </h4>
+                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
               </div>
-              <h4 className="font-heading text-xl font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">
-                {value.title}
-              </h4>
-              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
