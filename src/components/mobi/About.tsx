@@ -193,7 +193,7 @@ const About = () => {
               <img 
                 src={diplomaImage} 
                 alt="Diploma SENAI - Técnico em Desenvolvimento de Sistemas"
-                className="w-auto h-auto max-h-[75vh] max-w-[95vw] md:max-w-2xl object-contain rounded-lg"
+                className="w-auto h-auto max-h-[85vh] max-w-[98vw] md:max-w-4xl object-contain rounded-lg"
               />
             </div>
           </div>
