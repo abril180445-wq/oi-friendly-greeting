@@ -32,7 +32,7 @@ const Projects = () => {
       title: "AgendaGlas - Sistema de Agendamento",
       client: "Barbearia / Salão",
       type: "Web App",
-      image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80",
+      image: "/images/project-agendaglas.png",
       status: "Entregue",
       link: "https://agendaglas.lovable.app",
     },
