@@ -87,7 +87,7 @@ const Projects = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-15" />
       <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-[120px]" />
       <div className="absolute top-0 left-1/3 w-64 h-64 bg-primary/5 rounded-full blur-[100px]" />
 
       <div className="container-custom relative z-10">

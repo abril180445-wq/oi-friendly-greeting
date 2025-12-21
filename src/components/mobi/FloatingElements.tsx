@@ -29,7 +29,7 @@ const FloatingElements = () => {
         }}
       />
       <div
-        className="absolute rounded-full bg-purple-500/8 blur-[100px]"
+        className="absolute rounded-full bg-cyan-500/8 blur-[100px]"
         style={{
           width: "350px",
           height: "350px",
@@ -75,7 +75,7 @@ const FloatingElements = () => {
         }}
       />
       <div
-        className="absolute rounded-full bg-purple-400/7 blur-[70px]"
+        className="absolute rounded-full bg-cyan-400/7 blur-[70px]"
         style={{
           width: "220px",
           height: "220px",
@@ -93,7 +93,7 @@ const FloatingElements = () => {
         style={{ top: "20%", left: "25%", animation: "floatParticle1 5s ease-in-out infinite" }}
       />
       <div
-        className="absolute w-2 h-2 rounded-full bg-purple-400/25"
+        className="absolute w-2 h-2 rounded-full bg-cyan-400/25"
         style={{ top: "35%", right: "30%", animation: "floatParticle2 7s ease-in-out infinite", animationDelay: "1s" }}
       />
       <div
@@ -115,7 +115,7 @@ const FloatingElements = () => {
         style={{ top: "25%", right: "18%", animation: "pulseGlow1 3s ease-in-out infinite" }}
       />
       <div
-        className="absolute w-2 h-2 rounded-full bg-purple-400/30 shadow-[0_0_15px_5px_rgba(192,132,252,0.2)]"
+        className="absolute w-2 h-2 rounded-full bg-cyan-400/30 shadow-[0_0_15px_5px_rgba(34,211,238,0.2)]"
         style={{ top: "60%", left: "12%", animation: "pulseGlow2 4s ease-in-out infinite", animationDelay: "1.5s" }}
       />
       <div

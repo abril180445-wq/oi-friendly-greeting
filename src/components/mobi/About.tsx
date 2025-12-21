@@ -51,7 +51,7 @@ const About = () => {
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/2 h-full dots-pattern opacity-40" />
       <div className="absolute top-1/2 -translate-y-1/2 -left-40 w-96 h-96 bg-primary/8 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-cyan-500/5 rounded-full blur-[100px]" />
 
       <div className="container-custom relative z-10">
         {/* Section header */}
@@ -157,7 +157,7 @@ const About = () => {
               }`}
               style={valuesAnimation.getDelayClass(index)}
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/25 to-purple-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/25 to-cyan-500/25 flex items-center justify-center border border-primary/30 group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-glow transition-all duration-500">
                 <value.icon className="text-primary group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" size={28} />
               </div>
               <h4 className="font-heading text-xl font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">

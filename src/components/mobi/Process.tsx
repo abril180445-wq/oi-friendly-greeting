@@ -91,7 +91,7 @@ const Process = () => {
                   } max-w-md`}
                 >
                   <div className={`flex items-center gap-3 mb-3 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
-                    <div className="md:hidden w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-purple-500/20 flex items-center justify-center border border-primary/20">
+                    <div className="md:hidden w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/20 flex items-center justify-center border border-primary/20">
                       <step.icon className="text-primary" size={22} />
                     </div>
                     <div>
@@ -110,7 +110,7 @@ const Process = () => {
               </div>
 
               {/* Icon (center) */}
-              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-purple-500 items-center justify-center shadow-glow z-10">
+              <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-cyan-500 items-center justify-center shadow-glow z-10">
                 <step.icon className="text-primary-foreground" size={28} />
               </div>
 

@@ -11,7 +11,7 @@ const Services = () => {
       title: "Aplicações Web",
       description: "Sistemas web modernos, responsivos e escaláveis. SPAs, dashboards, e-commerces e plataformas completas.",
       features: ["React / Next.js", "APIs RESTful", "UI/UX Premium", "Alta Performance"],
-      color: "from-purple-500 to-violet-500",
+      color: "from-cyan-500 to-blue-500",
     },
     {
       icon: Smartphone,

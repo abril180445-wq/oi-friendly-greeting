@@ -78,7 +78,7 @@ const Header = () => {
         <nav className="flex items-center justify-between py-4">
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 bg-gradient-to-br from-primary to-purple-400 rounded-xl flex items-center justify-center shadow-glow transition-transform duration-300 group-hover:scale-105">
+            <div className="w-11 h-11 bg-gradient-to-br from-primary to-cyan-400 rounded-xl flex items-center justify-center shadow-glow transition-transform duration-300 group-hover:scale-105">
               <span className="text-primary-foreground font-heading font-bold text-xl">
                 R
               </span>
