@@ -159,6 +159,9 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="btn-premium text-primary-foreground font-semibold text-sm sm:text-lg px-6 sm:px-8 h-12 sm:h-14 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 group"
+                onClick={() => {
+                  document.getElementById('projetos')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 <span className="flex items-center gap-2">
                   Conheça Nossos Projetos
@@ -172,6 +175,9 @@ const Hero = () => {
                 size="lg"
                 variant="outline"
                 className="border-2 border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary font-semibold text-sm sm:text-lg px-6 sm:px-8 h-12 sm:h-14 rounded-xl transition-all duration-300 backdrop-blur-sm"
+                onClick={() => {
+                  document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Fale Conosco
               </Button>

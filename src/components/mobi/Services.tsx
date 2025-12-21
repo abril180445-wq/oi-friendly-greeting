@@ -110,7 +110,12 @@ const Services = () => {
                     ))}
                   </div>
 
-                  <button className="flex items-center gap-2 text-primary font-semibold text-sm group/btn hover:gap-3 transition-all duration-300">
+                  <button 
+                    className="flex items-center gap-2 text-primary font-semibold text-sm group/btn hover:gap-3 transition-all duration-300"
+                    onClick={() => {
+                      document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
                     Saiba mais
                     <ArrowRight
                       size={16}
