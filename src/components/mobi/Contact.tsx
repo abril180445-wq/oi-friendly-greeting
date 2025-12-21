@@ -86,7 +86,7 @@ const Contact = () => {
               Contato
             </span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Fale <span className="text-gradient">Conosco</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
@@ -95,11 +95,11 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact form */}
           <div
             ref={formAnimation.ref}
-            className={`glass border-gradient rounded-3xl p-8 md:p-10 card-shine border-glow transition-all duration-700 ${
+            className={`glass border-gradient rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 card-shine border-glow transition-all duration-700 ${
               formAnimation.isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-10"

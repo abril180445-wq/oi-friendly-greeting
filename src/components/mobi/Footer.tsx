@@ -35,7 +35,7 @@ const Footer = () => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       <div className="container-custom relative z-10 pt-20 pb-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-16">
           {/* Brand */}
           <div className="lg:col-span-1">
             <a href="#inicio" className="flex items-center gap-3 mb-6 group">
