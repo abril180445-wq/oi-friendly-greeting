@@ -132,17 +132,17 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ${
-            isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          className={`md:hidden absolute left-0 right-0 top-full overflow-hidden transition-all duration-500 ${
+            isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="flex flex-col gap-2 py-4 border-t border-border/20">
+          <div className="flex flex-col gap-1 py-4 px-4 mx-4 mb-4 bg-background/95 backdrop-blur-xl border border-border/30 rounded-2xl shadow-2xl">
             {navLinks.map((link, index) => (
               link.isRoute ? (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-muted/50 rounded-lg font-medium transition-all duration-300"
+                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-xl font-medium transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
@@ -152,7 +152,7 @@ const Header = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-muted/50 rounded-lg font-medium transition-all duration-300"
+                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-xl font-medium transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
@@ -160,11 +160,11 @@ const Header = () => {
                 </a>
               )
             ))}
-            <div className="px-4 py-2 flex items-center justify-between">
+            <div className="px-4 py-3 flex items-center justify-between border-t border-border/20 mt-2">
               <span className="text-sm text-muted-foreground">Tema</span>
               <ThemeToggle />
             </div>
-            <Button className="mt-2 btn-premium text-primary-foreground font-semibold w-full rounded-xl">
+            <Button className="mt-2 btn-premium text-primary-foreground font-semibold w-full rounded-xl py-3">
               <span>Solicite um Orçamento</span>
             </Button>
           </div>
