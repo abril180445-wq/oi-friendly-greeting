@@ -87,7 +87,7 @@ const DeliveredSites = () => {
   };
 
   return (
-    <section className="section-padding bg-secondary relative overflow-hidden noise">
+    <section className="section-padding bg-secondary/70 backdrop-blur-sm relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-10" />
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />

@@ -37,7 +37,7 @@ const About = () => {
   ];
 
   return (
-    <section id="sobre" className="section-padding bg-background relative overflow-hidden mesh-gradient">
+    <section id="sobre" className="section-padding bg-background/70 backdrop-blur-sm relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/2 h-full dots-pattern opacity-40" />
       <div className="absolute top-1/2 -translate-y-1/2 -left-40 w-96 h-96 bg-primary/8 rounded-full blur-[120px] animate-pulse" />
