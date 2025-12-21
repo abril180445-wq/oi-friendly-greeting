@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Globe, Rocket, Star, Quote, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { Globe, Rocket, Star, Quote, ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
 
@@ -9,6 +9,7 @@ const DeliveredSites = () => {
   const testimonialsAnimation = useScrollAnimation();
   const [activeTab, setActiveTab] = useState<"sites" | "landing">("sites");
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<{ image: string; name: string } | null>(null);
 
   const sites = [
     { name: "Pizzaria Bella Napoli", niche: "Alimentação", city: "SP", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&q=80" },
@@ -152,7 +153,8 @@ const DeliveredSites = () => {
           {(activeTab === "sites" ? sites : landingPages).map((item, index) => (
             <div
               key={item.name}
-              className={`group glass-primary-strong rounded-xl overflow-hidden card-hover transition-all duration-500 ${
+              onClick={() => setSelectedImage({ image: item.image, name: item.name })}
+              className={`group glass-primary-strong rounded-xl overflow-hidden card-hover transition-all duration-500 cursor-pointer ${
                 gridAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -302,6 +304,34 @@ const DeliveredSites = () => {
             ))}
           </div>
         </div>
+
+        {/* Image Modal */}
+        {selectedImage && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
+            onClick={() => setSelectedImage(null)}
+          >
+            <div 
+              className="relative bg-black/50 p-2 rounded-xl animate-scale-in max-w-4xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-2 right-2 z-[110] w-8 h-8 rounded-full bg-background/90 flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+              >
+                <X size={16} />
+              </button>
+              <img 
+                src={selectedImage.image.replace('w=300', 'w=800')} 
+                alt={selectedImage.name}
+                className="w-auto h-auto max-h-[80vh] max-w-full object-contain rounded-lg"
+              />
+              <p className="text-center text-white/80 mt-3 text-sm font-medium">
+                {selectedImage.name}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
