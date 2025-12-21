@@ -62,7 +62,7 @@ const CustomCursor = () => {
         }}
       >
         {/* Ponto central */}
-        <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" />
+        <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_10px_#ef4444]" />
       </div>
 
       {/* Círculo externo da mira */}
@@ -76,15 +76,15 @@ const CustomCursor = () => {
           transform: `translate(-50%, -50%) scale(${isPointer ? 1.4 : 1}) rotate(${isClicking ? '45deg' : '0deg'})`,
         }}
       >
-        <div className={`w-8 h-8 rounded-full border-2 border-primary/80 transition-all duration-200 ${
-          isClicking ? 'border-primary' : ''
+        <div className={`w-8 h-8 rounded-full border-2 border-red-500/80 transition-all duration-200 ${
+          isClicking ? 'border-red-500' : ''
         }`}>
           {/* Linhas da mira - horizontal */}
-          <div className="absolute top-1/2 left-0 w-2 h-0.5 bg-primary/80 -translate-y-1/2 -translate-x-1" />
-          <div className="absolute top-1/2 right-0 w-2 h-0.5 bg-primary/80 -translate-y-1/2 translate-x-1" />
+          <div className="absolute top-1/2 left-0 w-2 h-0.5 bg-red-500/80 -translate-y-1/2 -translate-x-1" />
+          <div className="absolute top-1/2 right-0 w-2 h-0.5 bg-red-500/80 -translate-y-1/2 translate-x-1" />
           {/* Linhas da mira - vertical */}
-          <div className="absolute left-1/2 top-0 w-0.5 h-2 bg-primary/80 -translate-x-1/2 -translate-y-1" />
-          <div className="absolute left-1/2 bottom-0 w-0.5 h-2 bg-primary/80 -translate-x-1/2 translate-y-1" />
+          <div className="absolute left-1/2 top-0 w-0.5 h-2 bg-red-500/80 -translate-x-1/2 -translate-y-1" />
+          <div className="absolute left-1/2 bottom-0 w-0.5 h-2 bg-red-500/80 -translate-x-1/2 translate-y-1" />
         </div>
       </div>
 
@@ -100,8 +100,8 @@ const CustomCursor = () => {
         }}
       >
         <div 
-          className={`w-16 h-16 rounded-full bg-primary/30 blur-xl transition-all duration-300 ${
-            isPointer ? 'scale-150 bg-primary/40' : ''
+          className={`w-16 h-16 rounded-full bg-red-500/30 blur-xl transition-all duration-300 ${
+            isPointer ? 'scale-150 bg-red-500/40' : ''
           }`}
         />
       </div>
