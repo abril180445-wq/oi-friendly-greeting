@@ -15,6 +15,7 @@ import Footer from "@/components/mobi/Footer";
 import WhatsAppButton from "@/components/mobi/WhatsAppButton";
 import ChatBot from "@/components/mobi/ChatBot";
 import ScrollProgress from "@/components/mobi/ScrollProgress";
+import FloatingElements from "@/components/mobi/FloatingElements";
 
 const Index = () => {
   return (
@@ -33,6 +34,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background/60" />
       </div>
 
+      <FloatingElements />
       <ScrollProgress />
       <Header />
       <main className="relative z-10">
