@@ -50,46 +50,48 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Cursor principal */}
+      {/* Cursor mira - centro */}
       <div
-        className={`fixed pointer-events-none z-[9999] mix-blend-difference transition-transform duration-75 ${
+        className={`fixed pointer-events-none z-[9999] transition-transform duration-75 ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
           left: position.x,
           top: position.y,
-          transform: `translate(-50%, -50%) scale(${isClicking ? 0.8 : isPointer ? 1.5 : 1})`,
+          transform: `translate(-50%, -50%) scale(${isClicking ? 0.8 : isPointer ? 1.3 : 1})`,
         }}
       >
-        <div 
-          className={`w-3 h-3 rounded-full bg-white transition-all duration-200 ${
-            isPointer ? 'scale-100' : 'scale-100'
-          }`} 
-        />
+        {/* Ponto central */}
+        <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary))]" />
       </div>
 
-      {/* Cursor glow trail */}
+      {/* Círculo externo da mira */}
       <div
-        className={`fixed pointer-events-none z-[9998] transition-all duration-300 ease-out ${
+        className={`fixed pointer-events-none z-[9998] transition-all duration-150 ease-out ${
           isVisible ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
           left: position.x,
           top: position.y,
-          transform: `translate(-50%, -50%) scale(${isPointer ? 1.5 : 1})`,
+          transform: `translate(-50%, -50%) scale(${isPointer ? 1.4 : 1}) rotate(${isClicking ? '45deg' : '0deg'})`,
         }}
       >
-        <div 
-          className={`w-10 h-10 rounded-full border border-primary/50 transition-all duration-300 ${
-            isClicking ? 'scale-75 border-primary' : ''
-          }`}
-        />
+        <div className={`w-8 h-8 rounded-full border-2 border-primary/80 transition-all duration-200 ${
+          isClicking ? 'border-primary' : ''
+        }`}>
+          {/* Linhas da mira - horizontal */}
+          <div className="absolute top-1/2 left-0 w-2 h-0.5 bg-primary/80 -translate-y-1/2 -translate-x-1" />
+          <div className="absolute top-1/2 right-0 w-2 h-0.5 bg-primary/80 -translate-y-1/2 translate-x-1" />
+          {/* Linhas da mira - vertical */}
+          <div className="absolute left-1/2 top-0 w-0.5 h-2 bg-primary/80 -translate-x-1/2 -translate-y-1" />
+          <div className="absolute left-1/2 bottom-0 w-0.5 h-2 bg-primary/80 -translate-x-1/2 translate-y-1" />
+        </div>
       </div>
 
       {/* Glow effect */}
       <div
-        className={`fixed pointer-events-none z-[9997] transition-all duration-500 ease-out ${
-          isVisible ? 'opacity-60' : 'opacity-0'
+        className={`fixed pointer-events-none z-[9997] transition-all duration-300 ease-out ${
+          isVisible ? 'opacity-40' : 'opacity-0'
         }`}
         style={{
           left: position.x,
@@ -98,8 +100,8 @@ const CustomCursor = () => {
         }}
       >
         <div 
-          className={`w-24 h-24 rounded-full bg-primary/20 blur-xl transition-all duration-500 ${
-            isPointer ? 'scale-150 bg-primary/30' : ''
+          className={`w-16 h-16 rounded-full bg-primary/30 blur-xl transition-all duration-300 ${
+            isPointer ? 'scale-150 bg-primary/40' : ''
           }`}
         />
       </div>
