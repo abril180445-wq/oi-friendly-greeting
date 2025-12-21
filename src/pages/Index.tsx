@@ -18,10 +18,24 @@ import ScrollProgress from "@/components/mobi/ScrollProgress";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Video Background */}
+      <div className="fixed inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover opacity-15"
+        >
+          <source src="/videos/blog-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
+      </div>
+
       <ScrollProgress />
       <Header />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <Clients />
         <About />
