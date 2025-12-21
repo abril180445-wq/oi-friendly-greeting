@@ -177,27 +177,24 @@ const About = () => {
         {/* Diploma Modal */}
         {showDiploma && (
           <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
             onClick={() => setShowDiploma(false)}
           >
             <button
               onClick={() => setShowDiploma(false)}
-              className="absolute top-4 right-4 z-[110] w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              className="absolute top-4 right-4 z-[110] w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-white/20 hover:text-white transition-colors"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
             <div 
-              className="relative max-w-4xl max-h-[90vh] w-full animate-scale-in"
+              className="relative max-w-md animate-scale-in"
               onClick={(e) => e.stopPropagation()}
             >
               <img 
                 src={diplomaImage} 
                 alt="Diploma SENAI - Técnico em Desenvolvimento de Sistemas"
-                className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                className="w-auto h-auto max-h-[70vh] max-w-full object-contain rounded-lg shadow-xl"
               />
-              <p className="text-center text-white/80 mt-4 text-sm">
-                Técnico em Desenvolvimento de Sistemas - SENAI Dr. Celso Charuri
-              </p>
             </div>
           </div>
         )}
