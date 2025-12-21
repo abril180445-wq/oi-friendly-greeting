@@ -10,6 +10,7 @@ import Footer from '@/components/mobi/Footer';
 import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import SEOHead from '@/components/SEOHead';
 
 type BlogPostData = {
   id: string;
@@ -382,6 +383,18 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* SEO Meta Tags for Social Media */}
+      <SEOHead
+        title={post.title}
+        description={post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 160)}
+        image={post.cover_image}
+        url={shareUrl}
+        type="article"
+        author={post.author?.name || 'Rorschach Motion'}
+        publishedTime={post.published_at || post.created_at}
+        tags={post.tags}
+      />
+
       {/* Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 z-[100] bg-secondary/30">
         <div
