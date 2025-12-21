@@ -126,7 +126,7 @@
 
 @layer components {
   .text-gradient {
-    @apply bg-gradient-to-r from-primary via-cyan-400 to-teal-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary via-purple-400 to-violet-400 bg-clip-text text-transparent;
   }
 
   .section-padding {

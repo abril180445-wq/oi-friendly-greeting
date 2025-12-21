@@ -44,7 +44,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-1">
             <a href="#inicio" className="flex items-center gap-3 mb-6 group">
-              <div className="w-11 h-11 bg-gradient-to-br from-primary to-cyan-400 rounded-xl flex items-center justify-center shadow-glow transition-transform duration-300 group-hover:scale-105">
+              <div className="w-11 h-11 bg-gradient-to-br from-primary to-purple-400 rounded-xl flex items-center justify-center shadow-glow transition-transform duration-300 group-hover:scale-105">
                 <span className="text-primary-foreground font-heading font-bold text-xl">
                   R
                 </span>
@@ -156,7 +156,7 @@ const Footer = () => {
             </div>
             <button
               onClick={scrollToTop}
-              className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-cyan-400 text-primary-foreground flex items-center justify-center shadow-glow hover:shadow-glow-lg hover:scale-105 transition-all duration-300"
+              className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-purple-400 text-primary-foreground flex items-center justify-center shadow-glow hover:shadow-glow-lg hover:scale-105 transition-all duration-300"
               aria-label="Voltar ao topo"
             >
               <ArrowUp size={20} />
