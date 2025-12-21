@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,6 +21,7 @@ const Header = () => {
     { name: "Sobre", href: "#sobre" },
     { name: "Serviços", href: "#servicos" },
     { name: "Projetos", href: "#projetos" },
+    { name: "Blog", href: "/blog", isRoute: true },
     { name: "Contato", href: "#contato" },
   ];
 
@@ -94,14 +97,25 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="relative px-4 py-2 text-foreground/80 hover:text-foreground font-medium transition-colors duration-300 line-reveal"
-              >
-                {link.name}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="relative px-4 py-2 text-foreground/80 hover:text-foreground font-medium transition-colors duration-300 line-reveal"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="relative px-4 py-2 text-foreground/80 hover:text-foreground font-medium transition-colors duration-300 line-reveal"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
+            <ThemeToggle />
             <Button className="ml-4 btn-premium text-primary-foreground font-semibold px-6 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300">
               <span>Solicite um Orçamento</span>
             </Button>
@@ -124,16 +138,32 @@ const Header = () => {
         >
           <div className="flex flex-col gap-2 py-4 border-t border-border/20">
             {navLinks.map((link, index) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="px-4 py-3 text-foreground hover:text-primary hover:bg-muted/50 rounded-lg font-medium transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                {link.name}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-muted/50 rounded-lg font-medium transition-all duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-muted/50 rounded-lg font-medium transition-all duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {link.name}
+                </a>
+              )
             ))}
+            <div className="px-4 py-2 flex items-center justify-between">
+              <span className="text-sm text-muted-foreground">Tema</span>
+              <ThemeToggle />
+            </div>
             <Button className="mt-2 btn-premium text-primary-foreground font-semibold w-full rounded-xl">
               <span>Solicite um Orçamento</span>
             </Button>

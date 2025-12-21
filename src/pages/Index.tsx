@@ -13,10 +13,13 @@ import FAQ from "@/components/mobi/FAQ";
 import Contact from "@/components/mobi/Contact";
 import Footer from "@/components/mobi/Footer";
 import WhatsAppButton from "@/components/mobi/WhatsAppButton";
+import ChatBot from "@/components/mobi/ChatBot";
+import ScrollProgress from "@/components/mobi/ScrollProgress";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <ScrollProgress />
       <Header />
       <main>
         <Hero />
@@ -34,6 +37,7 @@ const Index = () => {
       </main>
       <Footer />
       <WhatsAppButton />
+      <ChatBot />
     </div>
   );
 };
