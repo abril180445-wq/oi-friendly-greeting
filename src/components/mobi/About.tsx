@@ -165,7 +165,8 @@ const About = () => {
               </h4>
               <p className="text-muted-foreground leading-relaxed text-sm">{value.description}</p>
               {(value as any).isDiploma && (
-                <span className="inline-block mt-3 text-xs text-primary/70 hover:text-primary transition-colors">
+                <span className="inline-flex items-center gap-2 mt-4 px-4 py-2 bg-primary/20 text-primary font-semibold text-sm rounded-full hover:bg-primary/30 hover:scale-105 transition-all duration-300 animate-pulse">
+                  <Eye size={16} />
                   Clique para ver o diploma
                 </span>
               )}
