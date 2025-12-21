@@ -18,6 +18,15 @@ const Projects = () => {
     },
     {
       id: 2,
+      title: "Pizzaria Tatuquara",
+      client: "Pizzaria Tatuquara",
+      type: "Web App",
+      image: "/images/project-pizzaria-tatuquara.png",
+      status: "Entregue",
+      link: "https://pizza-perfect-clone.vercel.app",
+    },
+    {
+      id: 3,
       title: "Sistema ERP Completo",
       client: "Indústria Têxtil",
       type: "Web App",
@@ -25,7 +34,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 3,
+      id: 4,
       title: "App de Delivery",
       client: "Rede de Restaurantes",
       type: "Mobile App",
@@ -33,7 +42,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 4,
+      id: 5,
       title: "Plataforma E-commerce",
       client: "Loja de Moda",
       type: "Web App",
@@ -41,7 +50,7 @@ const Projects = () => {
       status: "Em andamento",
     },
     {
-      id: 5,
+      id: 6,
       title: "Sistema de Gestão Escolar",
       client: "Rede de Ensino",
       type: "Web App",
@@ -49,7 +58,7 @@ const Projects = () => {
       status: "Entregue",
     },
     {
-      id: 6,
+      id: 7,
       title: "App Financeiro",
       client: "Fintech",
       type: "Mobile App",
