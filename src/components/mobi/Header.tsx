@@ -133,7 +133,7 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden absolute left-4 right-4 top-full mt-2 menu-surface shadow-elevated animate-fade-in z-50">
-            <div className="flex flex-col p-2">
+            <div className="flex flex-col p-1.5">
               {navLinks.map((link) =>
                 link.isRoute ? (
                   <Link
@@ -157,12 +157,12 @@ const Header = () => {
               )}
             </div>
 
-            <div className="border-t border-border/20 p-4 flex flex-col gap-3">
+            <div className="border-t border-white/10 p-3 flex flex-col gap-2">
               <div className="flex items-center justify-between px-2">
-                <span className="text-sm text-muted-foreground">Alterar tema</span>
+                <span className="text-xs text-white/70">Tema</span>
                 <ThemeToggle />
               </div>
-              <Button className="btn-premium text-primary-foreground font-semibold w-full rounded-xl py-3">
+              <Button className="btn-premium text-primary-foreground font-semibold w-full rounded-lg py-2 text-sm">
                 <span>Solicite um Orçamento</span>
               </Button>
             </div>
