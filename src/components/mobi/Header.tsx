@@ -131,44 +131,52 @@ const Header = () => {
         </nav>
 
         {/* Mobile Navigation */}
-        <div
-          className={`md:hidden absolute left-0 right-0 top-full overflow-hidden transition-all duration-500 ${
-            isMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="flex flex-col gap-1 py-4 px-4 mx-4 mb-4 bg-background/95 backdrop-blur-xl border border-border/30 rounded-2xl shadow-2xl">
-            {navLinks.map((link, index) => (
-              link.isRoute ? (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-xl font-medium transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {link.name}
-                </Link>
-              ) : (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="px-4 py-3 text-foreground hover:text-primary hover:bg-primary/10 rounded-xl font-medium transition-all duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {link.name}
-                </a>
-              )
-            ))}
-            <div className="px-4 py-3 flex items-center justify-between border-t border-border/20 mt-2">
-              <span className="text-sm text-muted-foreground">Tema</span>
-              <ThemeToggle />
+        {isMenuOpen && (
+          <div className="md:hidden fixed inset-0 top-[72px] z-40">
+            {/* Backdrop */}
+            <div 
+              className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            {/* Menu */}
+            <div className="relative mx-4 mt-2 bg-card border border-border rounded-2xl shadow-2xl overflow-hidden animate-fade-in">
+              <div className="flex flex-col p-2">
+                {navLinks.map((link) => (
+                  link.isRoute ? (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="px-4 py-3.5 text-foreground hover:text-primary hover:bg-muted rounded-xl font-medium transition-all duration-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="px-4 py-3.5 text-foreground hover:text-primary hover:bg-muted rounded-xl font-medium transition-all duration-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  )
+                ))}
+              </div>
+              
+              <div className="border-t border-border p-4 flex flex-col gap-3">
+                <div className="flex items-center justify-between px-2">
+                  <span className="text-sm text-muted-foreground">Alterar tema</span>
+                  <ThemeToggle />
+                </div>
+                <Button className="btn-premium text-primary-foreground font-semibold w-full rounded-xl py-3">
+                  <span>Solicite um Orçamento</span>
+                </Button>
+              </div>
             </div>
-            <Button className="mt-2 btn-premium text-primary-foreground font-semibold w-full rounded-xl py-3">
-              <span>Solicite um Orçamento</span>
-            </Button>
           </div>
-        </div>
+        )}
       </div>
     </header>
   );
