@@ -177,23 +177,23 @@ const About = () => {
         {/* Diploma Modal */}
         {showDiploma && (
           <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 animate-fade-in"
             onClick={() => setShowDiploma(false)}
           >
-            <button
-              onClick={() => setShowDiploma(false)}
-              className="absolute top-4 right-4 z-[110] w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-white/20 hover:text-white transition-colors"
-            >
-              <X size={18} />
-            </button>
             <div 
-              className="relative max-w-md animate-scale-in"
+              className="relative bg-black/70 backdrop-blur-sm p-3 rounded-xl animate-scale-in"
               onClick={(e) => e.stopPropagation()}
             >
+              <button
+                onClick={() => setShowDiploma(false)}
+                className="absolute -top-2 -right-2 z-[110] w-7 h-7 rounded-full bg-background/90 flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+              >
+                <X size={14} />
+              </button>
               <img 
                 src={diplomaImage} 
                 alt="Diploma SENAI - Técnico em Desenvolvimento de Sistemas"
-                className="w-auto h-auto max-h-[70vh] max-w-full object-contain rounded-lg shadow-xl"
+                className="w-auto h-auto max-h-[60vh] max-w-[90vw] md:max-w-lg object-contain rounded-lg"
               />
             </div>
           </div>
