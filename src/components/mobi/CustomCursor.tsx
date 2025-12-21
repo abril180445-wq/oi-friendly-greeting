@@ -1,10 +1,70 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+  const audioContextRef = useRef<AudioContext | null>(null);
+
+  // Função para criar som de tiro sintético
+  const playGunshot = useCallback(() => {
+    try {
+      if (!audioContextRef.current) {
+        audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+      
+      const ctx = audioContextRef.current;
+      const now = ctx.currentTime;
+
+      // Criar ruído branco para explosão
+      const noiseBuffer = ctx.createBuffer(1, ctx.sampleRate * 0.15, ctx.sampleRate);
+      const noiseData = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < noiseData.length; i++) {
+        noiseData[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / noiseData.length, 2);
+      }
+
+      const noiseSource = ctx.createBufferSource();
+      noiseSource.buffer = noiseBuffer;
+
+      // Filtro passa-baixa para som mais grave
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(2000, now);
+      filter.frequency.exponentialRampToValueAtTime(200, now + 0.1);
+
+      // Ganho com envelope
+      const gainNode = ctx.createGain();
+      gainNode.gain.setValueAtTime(0.4, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+
+      // Oscilador para "punch" inicial
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(150, now);
+      osc.frequency.exponentialRampToValueAtTime(50, now + 0.05);
+
+      const oscGain = ctx.createGain();
+      oscGain.gain.setValueAtTime(0.5, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+
+      // Conectar nodes
+      noiseSource.connect(filter);
+      filter.connect(gainNode);
+      gainNode.connect(ctx.destination);
+
+      osc.connect(oscGain);
+      oscGain.connect(ctx.destination);
+
+      // Tocar
+      noiseSource.start(now);
+      noiseSource.stop(now + 0.15);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    } catch (e) {
+      console.log('Audio not available');
+    }
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -23,7 +83,10 @@ const CustomCursor = () => {
       setIsPointer(!!isClickable);
     };
 
-    const handleMouseDown = () => setIsClicking(true);
+    const handleMouseDown = () => {
+      setIsClicking(true);
+      playGunshot();
+    };
     const handleMouseUp = () => setIsClicking(false);
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
@@ -41,7 +104,7 @@ const CustomCursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, []);
+  }, [playGunshot]);
 
   // Não mostrar em dispositivos touch
   if (typeof window !== 'undefined' && 'ontouchstart' in window) {
