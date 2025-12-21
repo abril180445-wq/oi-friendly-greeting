@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
-import AIBlogGenerator from '@/components/blog/AIBlogGenerator';
 
 type BlogPost = {
   id: string;
@@ -352,16 +351,13 @@ const Blog = () => {
           </nav>
 
           {/* Hero Section */}
-          <div className="mb-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                Blog <span className="text-gradient">Tech</span>
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl">
-                Artigos, tutoriais e insights sobre desenvolvimento web, mobile e as tendências do mercado digital.
-              </p>
-            </div>
-            <AIBlogGenerator onPostGenerated={() => window.location.reload()} />
+          <div className="mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Blog <span className="text-gradient">Tech</span>
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              Artigos, tutoriais e insights sobre desenvolvimento web, mobile e as tendências do mercado digital.
+            </p>
           </div>
 
           {/* Search and Filters */}

@@ -9,6 +9,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 import ImageUpload from '@/components/admin/ImageUpload';
+import AIBlogGenerator from '@/components/blog/AIBlogGenerator';
 
 type Profile = {
   id: string;
@@ -358,10 +359,13 @@ const Admin = () => {
             {/* Actions */}
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-semibold">Artigos do Blog</h2>
-              <Button onClick={() => setShowForm(true)} className="gap-2">
-                <Plus size={16} />
-                Novo Artigo
-              </Button>
+              <div className="flex items-center gap-3">
+                <AIBlogGenerator onPostGenerated={fetchPosts} />
+                <Button onClick={() => setShowForm(true)} className="gap-2">
+                  <Plus size={16} />
+                  Novo Artigo
+                </Button>
+              </div>
             </div>
 
             {/* Form */}
