@@ -601,49 +601,90 @@
     @apply opacity-100;
   }
 
-  /* Uniform floating animations */
-  @keyframes floatUniform {
+  /* Varied blob floating animations */
+  @keyframes floatBlob1 {
     0%, 100% {
       transform: translateY(0) translateX(0) scale(1);
+    }
+    33% {
+      transform: translateY(-40px) translateX(20px) scale(1.05);
+    }
+    66% {
+      transform: translateY(20px) translateX(-30px) scale(0.95);
+    }
+  }
+
+  @keyframes floatBlob2 {
+    0%, 100% {
+      transform: translateY(0) translateX(0) scale(1);
+    }
+    25% {
+      transform: translateY(30px) translateX(-25px) scale(1.08);
+    }
+    50% {
+      transform: translateY(-20px) translateX(15px) scale(0.92);
+    }
+    75% {
+      transform: translateY(15px) translateX(30px) scale(1.03);
+    }
+  }
+
+  @keyframes floatBlob3 {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-35px) translateX(-20px);
+    }
+  }
+
+  /* Particle animations */
+  @keyframes floatParticle1 {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px);
       opacity: 0.6;
     }
-    50% {
-      transform: translateY(-30px) translateX(15px) scale(1.1);
-      opacity: 0.8;
-    }
   }
 
-  @keyframes floatParticleUniform {
+  @keyframes floatParticle2 {
     0%, 100% {
-      transform: translateY(0);
-      opacity: 0.2;
+      transform: translateY(0) translateX(0);
+      opacity: 0.25;
     }
-    50% {
-      transform: translateY(-25px);
+    33% {
+      transform: translateY(-15px) translateX(-8px);
       opacity: 0.5;
     }
+    66% {
+      transform: translateY(10px) translateX(12px);
+      opacity: 0.35;
+    }
   }
 
-  @keyframes pulseSlow {
+  /* Glow pulse animations */
+  @keyframes pulseGlow1 {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.3);
+    }
+  }
+
+  @keyframes pulseGlow2 {
     0%, 100% {
       opacity: 0.3;
       transform: scale(1);
     }
     50% {
-      opacity: 0.6;
+      opacity: 0.55;
       transform: scale(1.2);
     }
-  }
-
-  .animate-float-uniform {
-    animation: floatUniform 10s ease-in-out infinite;
-  }
-
-  .animate-float-particle {
-    animation: floatParticleUniform 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulseSlow 4s ease-in-out infinite;
   }
 }
