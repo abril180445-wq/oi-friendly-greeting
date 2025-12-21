@@ -52,7 +52,7 @@ const Services = () => {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-primary mb-6">
             <Sparkles size={16} className="text-primary" />
             <span className="text-primary font-medium text-sm tracking-wide">
               Nossos Serviços
@@ -103,7 +103,7 @@ const Services = () => {
                     {service.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-border/30 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+                        className="px-3 py-1 text-xs font-medium glass-primary text-foreground rounded-full hover:bg-primary/25 transition-all duration-300"
                       >
                         {feature}
                       </span>
