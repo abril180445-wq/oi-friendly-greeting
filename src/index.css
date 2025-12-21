@@ -144,8 +144,8 @@
 
   /* Mobile menu surface (glass effect over video) */
   .menu-surface {
-    @apply backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden;
-    background: hsl(0 0% 0% / 0.15);
+    @apply backdrop-blur-sm rounded-2xl overflow-hidden;
+    background: transparent;
   }
 
   .menu-link {
@@ -153,7 +153,7 @@
   }
 
   .menu-link:hover {
-    background: hsl(0 0% 100% / 0.05);
+    background: hsl(0 0% 100% / 0.03);
   }
 
   .glass-dark {
