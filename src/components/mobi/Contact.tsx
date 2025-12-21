@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { settings } = useSiteSettings();
   const headerAnimation = useScrollAnimation();
   const formAnimation = useScrollAnimation();
   const infoAnimation = useScrollAnimation();
@@ -39,19 +41,19 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Telefone",
-      info: "(41) 99753-9084",
-      link: "tel:+5541997539084",
+      info: settings.phone,
+      link: `tel:${settings.phone.replace(/\D/g, '')}`,
     },
     {
       icon: Mail,
       title: "E-mail",
-      info: "contato@rorschachmotion.com",
-      link: "mailto:contato@rorschachmotion.com",
+      info: settings.email,
+      link: `mailto:${settings.email}`,
     },
     {
       icon: MapPin,
       title: "Endereço",
-      info: "Av. Paulista, 1000 - São Paulo, SP",
+      info: settings.address,
       link: "#",
     },
     {
