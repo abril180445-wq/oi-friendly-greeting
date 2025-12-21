@@ -1,10 +1,13 @@
-import { CheckCircle, Target, Eye, Heart, Zap } from "lucide-react";
+import { useState } from "react";
+import { CheckCircle, Target, Eye, Heart, Zap, GraduationCap, X } from "lucide-react";
 import { useScrollAnimation, useStaggerAnimation } from "@/hooks/useScrollAnimation";
+import diplomaImage from "@/assets/diploma-senai.png";
 
 const About = () => {
+  const [showDiploma, setShowDiploma] = useState(false);
   const headerAnimation = useScrollAnimation();
   const contentAnimation = useScrollAnimation();
-  const valuesAnimation = useStaggerAnimation(3, 150);
+  const valuesAnimation = useStaggerAnimation(4, 150);
 
   const features = [
     "Equipe de desenvolvedores experientes",
@@ -33,6 +36,13 @@ const About = () => {
       title: "Valores",
       description:
         "Inovação, qualidade, transparência, comprometimento com o cliente e melhoria contínua.",
+    },
+    {
+      icon: GraduationCap,
+      title: "Formação",
+      description:
+        "Técnico em Desenvolvimento de Sistemas - SENAI Dr. Celso Charuri, Curitiba/PR.",
+      isDiploma: true,
     },
   ];
 
@@ -133,11 +143,14 @@ const About = () => {
         </div>
 
         {/* Values */}
-        <div ref={valuesAnimation.ref} className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <div ref={valuesAnimation.ref} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {values.map((value, index) => (
             <div
               key={index}
+              onClick={() => (value as any).isDiploma && setShowDiploma(true)}
               className={`group glass border-gradient rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center card-hover card-shine border-glow transition-all duration-500 ${
+                (value as any).isDiploma ? 'cursor-pointer' : ''
+              } ${
                 valuesAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -150,10 +163,40 @@ const About = () => {
               <h4 className="font-heading text-xl font-bold text-foreground mb-4 group-hover:text-gradient transition-all duration-300">
                 {value.title}
               </h4>
-              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+              <p className="text-muted-foreground leading-relaxed text-sm">{value.description}</p>
+              {(value as any).isDiploma && (
+                <span className="inline-block mt-3 text-xs text-primary/70 hover:text-primary transition-colors">
+                  Clique para ver o diploma
+                </span>
+              )}
             </div>
           ))}
         </div>
+
+        {/* Diploma Modal */}
+        {showDiploma && (
+          <div 
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in"
+            onClick={() => setShowDiploma(false)}
+          >
+            <div 
+              className="relative max-w-3xl w-full bg-white rounded-xl shadow-2xl animate-scale-in overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowDiploma(false)}
+                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+              >
+                <X size={16} />
+              </button>
+              <img 
+                src={diplomaImage} 
+                alt="Diploma SENAI - Técnico em Desenvolvimento de Sistemas"
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
