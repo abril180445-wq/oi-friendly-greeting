@@ -27,11 +27,11 @@ const Index = () => {
           muted
           loop
           playsInline
-          className="w-full h-[120%] object-cover opacity-50 scale-110 -translate-y-[10%]"
+          className="w-full h-[120%] object-cover opacity-60 scale-110 -translate-y-[10%]"
         >
           <source src="/videos/blog-background.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/30 to-background/50" />
       </div>
 
       <FloatingElements />
