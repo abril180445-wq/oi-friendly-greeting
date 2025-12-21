@@ -91,6 +91,13 @@ const Projects = () => {
     }
   };
 
+  const handleProjectClick = (e: React.MouseEvent, link?: string) => {
+    if (link) {
+      e.stopPropagation();
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <section id="projetos" className="section-padding bg-secondary/50 backdrop-blur-sm relative overflow-hidden">
       {/* Background Effects */}
@@ -180,18 +187,16 @@ const Projects = () => {
                   </div>
                 </div>
                 {project.link ? (
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-primary font-semibold text-sm group/btn"
+                  <button 
+                    onClick={(e) => handleProjectClick(e, project.link)}
+                    className="inline-flex items-center gap-2 text-primary font-semibold text-sm group/btn hover:underline relative z-20"
                   >
                     Ver projeto
                     <ExternalLink
                       size={16}
                       className="group-hover/btn:translate-x-1 transition-transform duration-300"
                     />
-                  </a>
+                  </button>
                 ) : (
                   <button className="flex items-center gap-2 text-primary font-semibold text-sm group/btn">
                     Ver detalhes
