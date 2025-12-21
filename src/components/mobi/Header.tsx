@@ -132,14 +132,14 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute left-4 right-4 top-full mt-2 bg-white dark:bg-slate-900 border border-border/50 rounded-2xl shadow-xl overflow-hidden animate-fade-in z-50">
+          <div className="md:hidden absolute left-4 right-4 top-full mt-2 menu-surface shadow-elevated animate-fade-in z-50">
             <div className="flex flex-col p-2">
-              {navLinks.map((link) => (
+              {navLinks.map((link) =>
                 link.isRoute ? (
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="px-4 py-3 text-slate-700 dark:text-slate-200 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-all duration-200"
+                    className="menu-link hover:text-primary"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
@@ -148,18 +148,18 @@ const Header = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="px-4 py-3 text-slate-700 dark:text-slate-200 hover:text-primary hover:bg-primary/5 rounded-xl font-medium transition-all duration-200"
+                    className="menu-link hover:text-primary"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
                   </a>
                 )
-              ))}
+              )}
             </div>
-            
-            <div className="border-t border-border/30 p-4 flex flex-col gap-3">
+
+            <div className="border-t border-border/20 p-4 flex flex-col gap-3">
               <div className="flex items-center justify-between px-2">
-                <span className="text-sm text-slate-500 dark:text-slate-400">Alterar tema</span>
+                <span className="text-sm text-muted-foreground">Alterar tema</span>
                 <ThemeToggle />
               </div>
               <Button className="btn-premium text-primary-foreground font-semibold w-full rounded-xl py-3">
