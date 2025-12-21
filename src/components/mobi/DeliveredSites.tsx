@@ -169,8 +169,8 @@ const DeliveredSites = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/40 to-transparent" />
                 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 glass-primary-strong flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-9 h-9 rounded-full bg-primary/40 backdrop-blur-md flex items-center justify-center border border-primary/50 shadow-glow">
+                <div className="absolute inset-0 bg-secondary/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-9 h-9 rounded-full bg-primary/50 flex items-center justify-center border border-primary/60 shadow-glow">
                     <ExternalLink className="text-foreground" size={16} />
                   </div>
                 </div>
