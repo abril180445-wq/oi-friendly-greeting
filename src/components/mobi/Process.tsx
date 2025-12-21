@@ -39,7 +39,7 @@ const Process = () => {
   ];
 
   return (
-    <section className="section-padding bg-secondary relative overflow-hidden noise">
+    <section className="section-padding bg-secondary/70 backdrop-blur-sm relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-10" />
       <div className="absolute top-1/2 -translate-y-1/2 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[150px]" />

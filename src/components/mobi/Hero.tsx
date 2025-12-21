@@ -81,7 +81,7 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden animated-gradient noise mesh-gradient"
+      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden"
     >
       {/* Animated Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-20" />

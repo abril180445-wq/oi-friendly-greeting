@@ -16,7 +16,7 @@ const Technologies = () => {
   ];
 
   return (
-    <section className="py-20 bg-secondary relative overflow-hidden">
+    <section className="py-20 bg-secondary/70 backdrop-blur-sm relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-10" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[120px]" />
