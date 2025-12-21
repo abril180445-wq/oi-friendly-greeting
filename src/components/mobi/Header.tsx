@@ -130,7 +130,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute left-4 right-4 top-full mt-1 menu-surface shadow-lg animate-fade-in z-50 rounded-xl overflow-hidden">
+          <div className="md:hidden absolute left-4 right-4 top-full mt-3 menu-surface shadow-lg animate-fade-in z-50 rounded-xl overflow-hidden">
             <div className="grid grid-cols-3 gap-px bg-white/5 p-1">
               {navLinks.map((link) =>
                 link.isRoute ? (
