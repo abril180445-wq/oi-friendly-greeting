@@ -89,6 +89,7 @@ const AIBlogGenerator: React.FC<AIBlogGeneratorProps> = ({ onPostGenerated }) =>
           content: data.content,
           category: data.category,
           tags: data.tags,
+          cover_image: data.cover_image || null,
           author_id: profile.id,
           published: true,
           published_at: new Date().toISOString(),
