@@ -59,7 +59,7 @@ const About = () => {
               Sobre Nós
             </span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Conheça a <span className="text-gradient">Rorschach Motion</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
@@ -70,7 +70,7 @@ const About = () => {
 
         <div
           ref={contentAnimation.ref}
-          className="grid lg:grid-cols-2 gap-16 items-center mb-20"
+          className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-12 sm:mb-20"
         >
           {/* Image */}
           <div
@@ -107,7 +107,7 @@ const About = () => {
                 : "opacity-0 translate-x-10"
             }`}
           >
-            <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-6">
+            <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 sm:mb-6">
               Por que escolher a Rorschach Motion?
             </h3>
             <p className="text-muted-foreground mb-8 leading-relaxed">
@@ -133,11 +133,11 @@ const About = () => {
         </div>
 
         {/* Values */}
-        <div ref={valuesAnimation.ref} className="grid md:grid-cols-3 gap-6">
+        <div ref={valuesAnimation.ref} className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {values.map((value, index) => (
             <div
               key={index}
-              className={`group glass border-gradient rounded-2xl p-8 text-center card-hover card-shine border-glow transition-all duration-500 ${
+              className={`group glass border-gradient rounded-xl sm:rounded-2xl p-5 sm:p-8 text-center card-hover card-shine border-glow transition-all duration-500 ${
                 valuesAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"

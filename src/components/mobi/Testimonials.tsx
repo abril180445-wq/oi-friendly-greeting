@@ -90,7 +90,7 @@ const Testimonials = () => {
               Depoimentos
             </span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             O que nossos <span className="text-gradient">clientes dizem</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
@@ -102,7 +102,7 @@ const Testimonials = () => {
         {/* Testimonial carousel */}
         <div className="relative max-w-4xl mx-auto">
           {/* Main testimonial */}
-          <div className="glass-dark border-gradient rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+          <div className="glass-dark border-gradient rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 text-center relative overflow-hidden">
             {/* Quote decoration */}
             <Quote
               size={120}
@@ -123,7 +123,7 @@ const Testimonials = () => {
               </div>
 
               {/* Text */}
-              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto">
+              <p className="text-foreground text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
                 "{testimonials[currentIndex].content}"
               </p>
 

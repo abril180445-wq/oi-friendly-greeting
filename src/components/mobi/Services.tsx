@@ -58,7 +58,7 @@ const Services = () => {
               Nossos Serviços
             </span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Soluções <span className="text-gradient">sob medida</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
@@ -68,24 +68,24 @@ const Services = () => {
         </div>
 
         {/* Services grid */}
-        <div ref={gridAnimation.ref} className="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div ref={gridAnimation.ref} className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group glass border-gradient rounded-3xl p-8 transition-all duration-500 card-hover card-shine border-glow ${
+              className={`group glass border-gradient rounded-2xl sm:rounded-3xl p-5 sm:p-8 transition-all duration-500 card-hover card-shine border-glow ${
                 gridAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-start gap-6">
+              <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                 {/* Icon */}
                 <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} p-0.5 flex-shrink-0 group-hover:shadow-lg group-hover:scale-105 transition-all duration-500`}
+                  className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-gradient-to-br ${service.color} p-0.5 flex-shrink-0 group-hover:shadow-lg group-hover:scale-105 transition-all duration-500`}
                 >
-                  <div className="w-full h-full rounded-2xl bg-background/90 flex items-center justify-center group-hover:bg-background/70 transition-colors duration-300">
-                    <service.icon className="text-foreground group-hover:scale-110 transition-transform duration-300" size={28} />
+                  <div className="w-full h-full rounded-xl sm:rounded-2xl bg-background/90 flex items-center justify-center group-hover:bg-background/70 transition-colors duration-300">
+                    <service.icon className="text-foreground group-hover:scale-110 transition-transform duration-300 w-5 h-5 sm:w-7 sm:h-7" />
                   </div>
                 </div>
 

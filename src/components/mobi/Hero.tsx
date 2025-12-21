@@ -81,7 +81,7 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:pt-24 overflow-hidden"
     >
       {/* Animated Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
@@ -121,14 +121,14 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-primary mb-8 animate-fade-up shadow-inner shadow-primary/5">
-              <Sparkles size={16} className="text-primary animate-pulse drop-shadow-[0_0_4px_hsl(var(--primary))]" />
-              <span className="text-primary font-semibold text-sm tracking-wide">
+            <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full glass-primary mb-6 sm:mb-8 animate-fade-up shadow-inner shadow-primary/5">
+              <Sparkles size={14} className="text-primary animate-pulse drop-shadow-[0_0_4px_hsl(var(--primary))] sm:w-4 sm:h-4" />
+              <span className="text-primary font-semibold text-xs sm:text-sm tracking-wide">
                 Desenvolvimento de Sistemas
               </span>
             </div>
 
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-8 leading-[1.1] animate-fade-up animation-delay-100 text-shadow-sm">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 sm:mb-8 leading-[1.1] animate-fade-up animation-delay-100 text-shadow-sm">
               Transformamos suas{" "}
               <span className="text-gradient glow-text relative">
                 ideias
@@ -150,28 +150,28 @@ const Hero = () => {
               <span className="text-gradient glow-text">soluções digitais</span>
             </h1>
 
-            <p className="text-muted-foreground text-lg md:text-xl mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up animation-delay-200">
+            <p className="text-muted-foreground text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up animation-delay-200">
               Somos especialistas em criar sistemas personalizados, aplicações
               web e mobile que impulsionam o seu negócio para o próximo nível.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up animation-delay-300">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start animate-fade-up animation-delay-300">
               <Button
                 size="lg"
-                className="btn-premium text-primary-foreground font-semibold text-lg px-8 h-14 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 group"
+                className="btn-premium text-primary-foreground font-semibold text-sm sm:text-lg px-6 sm:px-8 h-12 sm:h-14 rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 group"
               >
                 <span className="flex items-center gap-2">
                   Conheça Nossos Projetos
                   <ArrowRight
-                    size={20}
-                    className="group-hover:translate-x-1 transition-transform duration-300"
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform duration-300 sm:w-5 sm:h-5"
                   />
                 </span>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary font-semibold text-lg px-8 h-14 rounded-xl transition-all duration-300 backdrop-blur-sm"
+                className="border-2 border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary font-semibold text-sm sm:text-lg px-6 sm:px-8 h-12 sm:h-14 rounded-xl transition-all duration-300 backdrop-blur-sm"
               >
                 Fale Conosco
               </Button>
@@ -193,7 +193,7 @@ const Hero = () => {
         </div>
 
         {/* Mobile stats */}
-        <div className="grid grid-cols-3 gap-4 mt-16 lg:hidden">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-12 sm:mt-16 lg:hidden">
           {stats.map((stat, index) => (
             <MobileStatCard
               key={index}
@@ -206,7 +206,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+      <div className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden sm:flex">
         <span className="text-muted-foreground text-xs uppercase tracking-widest">
           Scroll
         </span>

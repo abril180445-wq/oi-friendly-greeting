@@ -104,7 +104,7 @@ const Projects = () => {
               Nossos Projetos
             </span>
           </div>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Soluções que <span className="text-gradient">transformam</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
@@ -114,11 +114,11 @@ const Projects = () => {
         </div>
 
         {/* Projects grid */}
-        <div ref={gridAnimation.ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={gridAnimation.ref} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`group glass-dark rounded-2xl overflow-hidden card-hover card-shine border-glow transition-all duration-500 ${
+              className={`group glass-dark rounded-xl sm:rounded-2xl overflow-hidden card-hover card-shine border-glow transition-all duration-500 ${
                 gridAnimation.isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -151,17 +151,17 @@ const Projects = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+              <div className="p-4 sm:p-6">
+                <h3 className="font-heading text-base sm:text-xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                <div className="flex flex-col gap-2 mb-5">
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <Globe size={14} className="text-primary/70" />
+                <div className="flex flex-col gap-1 sm:gap-2 mb-3 sm:mb-5">
+                  <div className="flex items-center gap-2 text-muted-foreground text-xs sm:text-sm">
+                    <Globe size={12} className="text-primary/70 sm:w-3.5 sm:h-3.5" />
                     {project.client}
                   </div>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <Smartphone size={14} className="text-primary/70" />
+                  <div className="flex items-center gap-2 text-muted-foreground text-xs sm:text-sm">
+                    <Smartphone size={12} className="text-primary/70 sm:w-3.5 sm:h-3.5" />
                     {project.type}
                   </div>
                 </div>
