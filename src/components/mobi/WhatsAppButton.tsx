@@ -28,9 +28,9 @@ const WhatsAppButton = () => {
       aria-label="Fale conosco pelo WhatsApp"
     >
       {/* Button - Pill shape */}
-      <div className="relative flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-green-500 to-green-600 shadow-lg group-hover:scale-105 group-hover:shadow-xl transition-all duration-300">
-        <Phone className="text-white" size={20} />
-        <span className="text-white font-medium text-sm hidden sm:inline">WhatsApp</span>
+      <div className="relative flex items-center gap-1.5 px-3 py-2 rounded-full bg-gradient-to-r from-green-500 to-green-600 shadow-md group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+        <Phone className="text-white" size={16} />
+        <span className="text-white font-medium text-xs hidden sm:inline">WhatsApp</span>
       </div>
     </a>
   );
