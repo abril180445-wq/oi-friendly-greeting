@@ -223,7 +223,7 @@ const Projects = () => {
             onClick={() => setSelectedImage(null)}
           >
             <div 
-              className="relative bg-black/50 p-2 rounded-xl animate-scale-in max-w-4xl"
+              className="relative bg-black/50 p-2 rounded-xl animate-scale-in max-w-lg"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -233,9 +233,9 @@ const Projects = () => {
                 <X size={16} />
               </button>
               <img 
-                src={selectedImage.image.replace('w=600', 'w=1200')} 
+                src={selectedImage.image.replace('w=600', 'w=800')} 
                 alt={selectedImage.title}
-                className="w-auto h-auto max-h-[80vh] max-w-full object-contain rounded-lg"
+                className="w-auto h-auto max-h-[60vh] max-w-full object-contain rounded-lg"
               />
               <p className="text-center text-white/80 mt-3 text-sm font-medium">
                 {selectedImage.title}
