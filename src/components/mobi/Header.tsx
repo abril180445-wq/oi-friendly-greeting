@@ -132,14 +132,14 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden absolute left-4 right-4 top-full mt-1 menu-surface shadow-lg animate-fade-in z-50 rounded-lg">
-            <div className="flex flex-wrap gap-1 p-1.5">
+          <div className="md:hidden absolute left-4 right-4 top-full mt-1 menu-surface shadow-lg animate-fade-in z-50 rounded-xl overflow-hidden">
+            <div className="grid grid-cols-3 gap-px bg-white/5 p-1">
               {navLinks.map((link) =>
                 link.isRoute ? (
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="px-2.5 py-1.5 text-xs font-medium text-white/90 hover:text-primary hover:bg-white/5 rounded-md transition-colors"
+                    className="px-3 py-2 text-xs font-medium text-white/90 hover:text-primary hover:bg-white/10 rounded-lg transition-colors text-center"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
@@ -148,7 +148,7 @@ const Header = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="px-2.5 py-1.5 text-xs font-medium text-white/90 hover:text-primary hover:bg-white/5 rounded-md transition-colors"
+                    className="px-3 py-2 text-xs font-medium text-white/90 hover:text-primary hover:bg-white/10 rounded-lg transition-colors text-center"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
@@ -157,9 +157,9 @@ const Header = () => {
               )}
             </div>
 
-            <div className="border-t border-white/10 p-1.5 flex items-center justify-between gap-2">
+            <div className="border-t border-white/10 px-2 py-1.5 flex items-center justify-between">
               <ThemeToggle />
-              <Button className="btn-premium text-primary-foreground font-medium rounded-md py-1 px-3 text-xs h-7">
+              <Button className="btn-premium text-primary-foreground font-medium rounded-lg py-1.5 px-4 text-xs h-auto">
                 Orçamento
               </Button>
             </div>
