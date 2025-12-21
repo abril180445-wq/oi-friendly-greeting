@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Send, Wand2, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -235,6 +235,12 @@ const Admin = () => {
             <h1 className="text-xl font-bold">Painel Admin</h1>
           </div>
           <div className="flex items-center gap-4">
+            <Link to="/admin/campaigns">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Sparkles size={14} />
+                Campanhas
+              </Button>
+            </Link>
             <span className="text-sm text-muted-foreground">
               Olá, {profile?.name || 'Admin'}
             </span>
