@@ -28,6 +28,166 @@ type BlogPostData = {
   };
 };
 
+// Demo posts for when database is empty
+const demoPosts: BlogPostData[] = [
+  {
+    id: '1',
+    title: 'Como criar um site moderno em 2024',
+    slug: 'como-criar-site-moderno-2024',
+    excerpt: 'Descubra as melhores práticas e tecnologias para desenvolver websites que impressionam e convertem visitantes em clientes.',
+    content: `<h2>Introdução</h2><p>Neste artigo completo, vamos explorar as principais tendências de design e desenvolvimento web para 2024. Desde a escolha das tecnologias certas até a implementação de experiências de usuário memoráveis, você aprenderá tudo o que precisa saber para criar sites que se destacam no mercado digital.</p><h2>Tecnologias Modernas</h2><p>React, Vue e Next.js estão entre as ferramentas mais populares para desenvolvimento frontend. Cada uma tem suas vantagens e casos de uso específicos.</p><h2>Design Responsivo</h2><p>Com a variedade de dispositivos disponíveis hoje, é essencial que seu site funcione perfeitamente em todas as telas.</p><h2>Performance</h2><p>A velocidade de carregamento é crucial para a experiência do usuário e SEO. Otimize imagens, use lazy loading e minimize o JavaScript.</p><h2>Conclusão</h2><p>Criar um site moderno requer atenção a diversos aspectos técnicos e de design. Com as ferramentas e práticas corretas, você pode criar experiências digitais impressionantes.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800',
+    category: 'Desenvolvimento Web',
+    tags: ['web', 'design', 'frontend'],
+    published_at: '2024-01-15',
+    created_at: '2024-01-15',
+    author: { name: 'Emerson Cordeiro', avatar_url: '/images/emerson-cordeiro.jpeg' }
+  },
+  {
+    id: '2',
+    title: 'React vs Vue: Qual escolher para seu projeto?',
+    slug: 'react-vs-vue-qual-escolher',
+    excerpt: 'Uma análise completa das duas frameworks mais populares do mercado para ajudar na sua decisão.',
+    content: `<h2>React vs Vue</h2><p>React e Vue são duas das bibliotecas/frameworks mais populares para desenvolvimento frontend. Neste artigo, analisamos as principais diferenças, vantagens e desvantagens de cada uma para diferentes tipos de projetos.</p><h2>React</h2><p>Desenvolvido pelo Facebook, React é uma biblioteca JavaScript para construção de interfaces de usuário. É altamente flexível e possui um ecossistema gigantesco.</p><h2>Vue</h2><p>Vue é um framework progressivo que pode ser adotado incrementalmente. É conhecido por sua curva de aprendizado suave e documentação excelente.</p><h2>Quando usar cada um?</h2><p>React é ideal para projetos grandes e complexos, enquanto Vue brilha em projetos menores ou quando você precisa de prototipagem rápida.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800',
+    category: 'Desenvolvimento Web',
+    tags: ['react', 'vue', 'javascript'],
+    published_at: '2024-01-12',
+    created_at: '2024-01-12',
+    author: { name: 'Mobi Creative', avatar_url: null }
+  },
+  {
+    id: '3',
+    title: 'Inteligência Artificial no desenvolvimento de software',
+    slug: 'ia-desenvolvimento-software',
+    excerpt: 'Como a IA está revolucionando a forma como criamos aplicações e automatizamos processos.',
+    content: `<h2>A Revolução da IA</h2><p>A inteligência artificial está transformando o desenvolvimento de software de maneiras que poucos imaginavam possível há alguns anos. Ferramentas de IA generativa, assistentes de código e automação de testes são apenas o começo dessa revolução.</p><h2>Ferramentas de IA para Desenvolvedores</h2><p>GitHub Copilot, ChatGPT e outras ferramentas estão mudando a forma como escrevemos código.</p><h2>O Futuro</h2><p>À medida que a IA evolui, podemos esperar ainda mais automação e assistência no processo de desenvolvimento.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800',
+    category: 'Inteligência Artificial',
+    tags: ['ia', 'automação', 'futuro'],
+    published_at: '2024-01-10',
+    created_at: '2024-01-10',
+    author: { name: 'Emerson Cordeiro', avatar_url: '/images/emerson-cordeiro.jpeg' }
+  },
+  {
+    id: '4',
+    title: 'UX Design: Princípios essenciais para iniciantes',
+    slug: 'ux-design-principios-essenciais',
+    excerpt: 'Aprenda os fundamentos do design de experiência do usuário e como aplicá-los em seus projetos.',
+    content: `<h2>O que é UX Design?</h2><p>O UX Design é fundamental para criar produtos digitais que os usuários amam. Neste guia, cobrimos os princípios essenciais que todo designer e desenvolvedor deve conhecer.</p><h2>Princípios Fundamentais</h2><p>Usabilidade, acessibilidade, consistência e feedback são pilares do bom design de experiência.</p><h2>Pesquisa com Usuários</h2><p>Entender seu público é o primeiro passo para criar experiências memoráveis.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800',
+    category: 'Design',
+    tags: ['ux', 'design', 'usabilidade'],
+    published_at: '2024-01-08',
+    created_at: '2024-01-08',
+    author: { name: 'Mobi Creative', avatar_url: null }
+  },
+  {
+    id: '5',
+    title: 'SEO em 2024: O que realmente funciona',
+    slug: 'seo-2024-o-que-funciona',
+    excerpt: 'Estratégias comprovadas de SEO para melhorar o ranking do seu site nos mecanismos de busca.',
+    content: `<h2>SEO Moderno</h2><p>O SEO continua evoluindo, e o que funcionava há alguns anos pode não ser mais eficaz. Descubra as estratégias mais recentes e eficazes.</p><h2>Conteúdo de Qualidade</h2><p>O Google prioriza conteúdo útil e relevante para os usuários.</p><h2>Core Web Vitals</h2><p>Performance e experiência do usuário são fatores de ranking importantes.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800',
+    category: 'Marketing Digital',
+    tags: ['seo', 'marketing', 'google'],
+    published_at: '2024-01-05',
+    created_at: '2024-01-05',
+    author: { name: 'Emerson Cordeiro', avatar_url: '/images/emerson-cordeiro.jpeg' }
+  },
+  {
+    id: '6',
+    title: 'Criando APIs RESTful com Node.js',
+    slug: 'apis-restful-nodejs',
+    excerpt: 'Um guia prático para desenvolver APIs robustas e escaláveis usando Node.js e Express.',
+    content: `<h2>APIs RESTful</h2><p>APIs são a espinha dorsal das aplicações modernas. Aprenda a criar APIs RESTful profissionais usando Node.js.</p><h2>Express.js</h2><p>O Express é o framework mais popular para criar APIs em Node.js.</p><h2>Boas Práticas</h2><p>Versionamento, tratamento de erros e documentação são essenciais.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800',
+    category: 'Backend',
+    tags: ['nodejs', 'api', 'backend'],
+    published_at: '2024-01-03',
+    created_at: '2024-01-03',
+    author: { name: 'Mobi Creative', avatar_url: null }
+  },
+  {
+    id: '7',
+    title: 'Segurança em aplicações web: Guia completo',
+    slug: 'seguranca-aplicacoes-web',
+    excerpt: 'Proteja suas aplicações contra as principais vulnerabilidades e ataques cibernéticos.',
+    content: `<h2>Segurança Web</h2><p>A segurança é uma das maiores preocupações no desenvolvimento web. Este guia aborda as principais vulnerabilidades.</p><h2>SQL Injection</h2><p>Use queries parametrizadas para evitar injeção de SQL.</p><h2>XSS e CSRF</h2><p>Sanitize inputs e use tokens CSRF para proteger seus usuários.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800',
+    category: 'Segurança',
+    tags: ['segurança', 'web', 'hacking'],
+    published_at: '2024-01-01',
+    created_at: '2024-01-01',
+    author: { name: 'Emerson Cordeiro', avatar_url: '/images/emerson-cordeiro.jpeg' }
+  },
+  {
+    id: '8',
+    title: 'Tailwind CSS: Por que você deveria usar',
+    slug: 'tailwind-css-por-que-usar',
+    excerpt: 'Descubra como o Tailwind CSS pode acelerar seu desenvolvimento e melhorar a manutenção do código.',
+    content: `<h2>Tailwind CSS</h2><p>O Tailwind CSS revolucionou a forma como escrevemos CSS. Neste artigo, exploramos suas vantagens.</p><h2>Utility-First</h2><p>A abordagem utility-first permite desenvolvimento rápido e consistente.</p><h2>Customização</h2><p>O Tailwind é altamente customizável através do arquivo de configuração.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
+    category: 'Desenvolvimento Web',
+    tags: ['css', 'tailwind', 'frontend'],
+    published_at: '2023-12-28',
+    created_at: '2023-12-28',
+    author: { name: 'Mobi Creative', avatar_url: null }
+  },
+  {
+    id: '9',
+    title: 'TypeScript para desenvolvedores JavaScript',
+    slug: 'typescript-para-desenvolvedores-javascript',
+    excerpt: 'Faça a transição do JavaScript para TypeScript e melhore a qualidade do seu código.',
+    content: `<h2>Por que TypeScript?</h2><p>TypeScript adiciona tipagem estática ao JavaScript, trazendo benefícios enormes para a manutenção.</p><h2>Tipos Básicos</h2><p>Aprenda sobre string, number, boolean, array e outros tipos.</p><h2>Interfaces</h2><p>Use interfaces para definir contratos e estruturas de dados.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800',
+    category: 'Desenvolvimento Web',
+    tags: ['typescript', 'javascript', 'programação'],
+    published_at: '2023-12-25',
+    created_at: '2023-12-25',
+    author: { name: 'Emerson Cordeiro', avatar_url: '/images/emerson-cordeiro.jpeg' }
+  },
+  {
+    id: '10',
+    title: 'E-commerce: Tendências para 2024',
+    slug: 'ecommerce-tendencias-2024',
+    excerpt: 'As principais tendências de e-commerce que vão dominar o mercado neste ano.',
+    content: `<h2>O Futuro do E-commerce</h2><p>O comércio eletrônico está em constante evolução. Descubra as tendências que estão moldando o futuro.</p><h2>Personalização com IA</h2><p>Recomendações personalizadas aumentam conversões.</p><h2>Experiências Imersivas</h2><p>AR e VR estão transformando a experiência de compra.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800',
+    category: 'E-commerce',
+    tags: ['ecommerce', 'vendas', 'tendências'],
+    published_at: '2023-12-22',
+    created_at: '2023-12-22',
+    author: { name: 'Mobi Creative', avatar_url: null }
+  },
+  {
+    id: '11',
+    title: 'Acessibilidade web: Criando sites para todos',
+    slug: 'acessibilidade-web-sites-para-todos',
+    excerpt: 'Como tornar seu site acessível e inclusivo para pessoas com diferentes necessidades.',
+    content: `<h2>Acessibilidade Digital</h2><p>A acessibilidade web não é apenas uma boa prática, é uma responsabilidade.</p><h2>WCAG</h2><p>As diretrizes WCAG fornecem um padrão internacional para acessibilidade.</p><h2>Implementação</h2><p>Use alt text em imagens, navegação por teclado e contraste adequado.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800',
+    category: 'Desenvolvimento Web',
+    tags: ['acessibilidade', 'inclusão', 'web'],
+    published_at: '2023-12-20',
+    created_at: '2023-12-20',
+    author: { name: 'Emerson Cordeiro', avatar_url: '/images/emerson-cordeiro.jpeg' }
+  },
+  {
+    id: '12',
+    title: 'Performance web: Otimizando seu site',
+    slug: 'performance-web-otimizando-site',
+    excerpt: 'Técnicas avançadas para melhorar a velocidade e performance do seu website.',
+    content: `<h2>Por que Performance Importa</h2><p>Um site rápido é essencial para a experiência do usuário e SEO. Sites lentos perdem visitantes e vendas.</p><h2>Lazy Loading</h2><p>Carregue imagens e recursos apenas quando necessário para acelerar o carregamento inicial.</p><h2>Compressão de Imagens</h2><p>Use formatos modernos como WebP e ferramentas de compressão para reduzir o tamanho dos arquivos.</p><h2>CDN</h2><p>Distribua seu conteúdo globalmente para reduzir latência.</p><h2>Minificação</h2><p>Minifique CSS, JavaScript e HTML para reduzir o tamanho dos arquivos.</p><h2>Conclusão</h2><p>Otimizar a performance é um processo contínuo que traz benefícios significativos para seus usuários e negócio.</p>`,
+    cover_image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
+    category: 'Desenvolvimento Web',
+    tags: ['performance', 'otimização', 'velocidade'],
+    published_at: '2023-12-18',
+    created_at: '2023-12-18',
+    author: { name: 'Mobi Creative', avatar_url: null }
+  }
+];
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const { toast } = useToast();
@@ -58,6 +218,7 @@ const BlogPost = () => {
     const fetchPost = async () => {
       if (!slug) return;
       
+      // First try to fetch from database
       const { data, error } = await supabase
         .from('blog_posts')
         .select(`
@@ -78,7 +239,7 @@ const BlogPost = () => {
         `)
         .eq('slug', slug)
         .eq('published', true)
-        .single();
+        .maybeSingle();
 
       if (!error && data) {
         const postData = {
@@ -87,7 +248,7 @@ const BlogPost = () => {
         };
         setPost(postData);
         
-        // Fetch related posts
+        // Fetch related posts from database
         const { data: related } = await supabase
           .from('blog_posts')
           .select(`
@@ -111,7 +272,18 @@ const BlogPost = () => {
           .limit(3);
 
         if (related) {
-          setRelatedPosts(related.map((p: any) => ({ ...p, author: p.profiles })));
+          setRelatedPosts(related.map((p: any) => ({ ...p, author: p.profiles, content: '' })));
+        }
+      } else {
+        // Fallback to demo posts
+        const demoPost = demoPosts.find(p => p.slug === slug);
+        if (demoPost) {
+          setPost(demoPost);
+          // Get related demo posts
+          const related = demoPosts
+            .filter(p => p.category === demoPost.category && p.id !== demoPost.id)
+            .slice(0, 3);
+          setRelatedPosts(related);
         }
       }
       setLoading(false);
