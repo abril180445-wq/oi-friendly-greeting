@@ -29,8 +29,8 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "AgendaGlas - Sistema de Agendamento",
-      client: "Barbearia / Salão",
+      title: "AgendaPro - Sistema Completo de Agendamento com IA",
+      client: "Salões, Barbearias e Clínicas",
       type: "Web App",
       image: "/images/project-agendaglas.png",
       status: "Entregue",
