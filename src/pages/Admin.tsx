@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Settings, Save, Loader2, Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Linkedin, Youtube, Globe, Bot, Download } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, FileText, Sparkles, Settings, Save, Loader2, Phone, Mail, MapPin, MessageCircle, Instagram, Facebook, Linkedin, Youtube, Globe, Bot, Download, Upload, Database } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -55,6 +55,8 @@ const Admin = () => {
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [savingSettings, setSavingSettings] = useState(false);
   const [sendingBackup, setSendingBackup] = useState(false);
+  const [downloadingBackup, setDownloadingBackup] = useState(false);
+  const [restoringBackup, setRestoringBackup] = useState(false);
   const [siteSettings, setSiteSettings] = useState<SiteSettings>({
     phone: '',
     email: '',
@@ -199,6 +201,149 @@ const Admin = () => {
       });
     } finally {
       setSendingBackup(false);
+    }
+  };
+
+  const downloadBackup = async () => {
+    setDownloadingBackup(true);
+    
+    try {
+      const [blogPostsResult, profilesResult, siteSettingsResult, socialCampaignsResult] = await Promise.all([
+        supabase.from('blog_posts').select('*'),
+        supabase.from('profiles').select('*'),
+        supabase.from('site_settings').select('*'),
+        supabase.from('social_campaigns').select('*'),
+      ]);
+
+      const backup = {
+        generated_at: new Date().toISOString(),
+        blog_posts: blogPostsResult.data || [],
+        profiles: profilesResult.data || [],
+        site_settings: siteSettingsResult.data || [],
+        social_campaigns: socialCampaignsResult.data || [],
+      };
+
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `backup-site-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      toast({ title: 'Backup baixado com sucesso!' });
+    } catch (error: any) {
+      console.error('Download backup error:', error);
+      toast({ 
+        title: 'Erro ao baixar backup', 
+        description: error.message,
+        variant: 'destructive' 
+      });
+    } finally {
+      setDownloadingBackup(false);
+    }
+  };
+
+  const handleRestoreBackup = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!confirm('ATENÇÃO: Restaurar o backup irá substituir todos os dados atuais. Deseja continuar?')) {
+      event.target.value = '';
+      return;
+    }
+
+    setRestoringBackup(true);
+
+    try {
+      const text = await file.text();
+      const backup = JSON.parse(text);
+
+      if (!backup.generated_at || !backup.blog_posts || !backup.site_settings) {
+        throw new Error('Arquivo de backup inválido');
+      }
+
+      // Restore site_settings
+      for (const setting of backup.site_settings) {
+        const { data: existing } = await supabase
+          .from('site_settings')
+          .select('id')
+          .eq('key', setting.key)
+          .maybeSingle();
+
+        if (existing) {
+          await supabase
+            .from('site_settings')
+            .update({ value: setting.value, updated_at: new Date().toISOString() })
+            .eq('key', setting.key);
+        } else {
+          await supabase
+            .from('site_settings')
+            .insert({ key: setting.key, value: setting.value });
+        }
+      }
+
+      // Restore blog_posts - update existing or insert new
+      for (const post of backup.blog_posts) {
+        const { data: existing } = await supabase
+          .from('blog_posts')
+          .select('id')
+          .eq('id', post.id)
+          .maybeSingle();
+
+        if (existing) {
+          const { id, created_at, ...updateData } = post;
+          await supabase
+            .from('blog_posts')
+            .update(updateData)
+            .eq('id', post.id);
+        } else {
+          await supabase
+            .from('blog_posts')
+            .insert(post);
+        }
+      }
+
+      // Restore social_campaigns - update existing or insert new
+      for (const campaign of backup.social_campaigns || []) {
+        const { data: existing } = await supabase
+          .from('social_campaigns')
+          .select('id')
+          .eq('id', campaign.id)
+          .maybeSingle();
+
+        if (existing) {
+          const { id, created_at, ...updateData } = campaign;
+          await supabase
+            .from('social_campaigns')
+            .update(updateData)
+            .eq('id', campaign.id);
+        } else {
+          await supabase
+            .from('social_campaigns')
+            .insert(campaign);
+        }
+      }
+
+      toast({ 
+        title: 'Backup restaurado!', 
+        description: `Dados restaurados do backup de ${new Date(backup.generated_at).toLocaleDateString('pt-BR')}` 
+      });
+      
+      fetchPosts();
+      fetchSiteSettings();
+    } catch (error: any) {
+      console.error('Restore backup error:', error);
+      toast({ 
+        title: 'Erro ao restaurar backup', 
+        description: error.message,
+        variant: 'destructive' 
+      });
+    } finally {
+      setRestoringBackup(false);
+      event.target.value = '';
     }
   };
 
@@ -705,30 +850,77 @@ const Admin = () => {
                   />
                 </div>
 
-                <div className="flex gap-3">
-                  <Button onClick={saveSiteSettings} disabled={savingSettings} className="gap-2">
-                    {savingSettings ? (
-                      <Loader2 size={16} className="animate-spin" />
-                    ) : (
-                      <Save size={16} />
-                    )}
-                    Salvar Configurações
-                  </Button>
+                {/* Backup Section */}
+                <div className="border-t border-border pt-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <Database size={18} className="text-primary" />
+                    Backup do Site
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Faça backup dos dados do site ou restaure a partir de um backup anterior.
+                  </p>
                   
-                  <Button 
-                    variant="outline" 
-                    onClick={sendBackup} 
-                    disabled={sendingBackup} 
-                    className="gap-2"
-                  >
-                    {sendingBackup ? (
-                      <Loader2 size={16} className="animate-spin" />
-                    ) : (
-                      <Download size={16} />
-                    )}
-                    Enviar Backup por Email
-                  </Button>
+                  <div className="flex flex-wrap gap-3">
+                    <Button 
+                      variant="outline" 
+                      onClick={downloadBackup} 
+                      disabled={downloadingBackup} 
+                      className="gap-2"
+                    >
+                      {downloadingBackup ? (
+                        <Loader2 size={16} className="animate-spin" />
+                      ) : (
+                        <Download size={16} />
+                      )}
+                      Baixar Backup
+                    </Button>
+
+                    <Button 
+                      variant="outline" 
+                      onClick={sendBackup} 
+                      disabled={sendingBackup} 
+                      className="gap-2"
+                    >
+                      {sendingBackup ? (
+                        <Loader2 size={16} className="animate-spin" />
+                      ) : (
+                        <Mail size={16} />
+                      )}
+                      Enviar por Email
+                    </Button>
+
+                    <div className="relative">
+                      <input
+                        type="file"
+                        accept=".json"
+                        onChange={handleRestoreBackup}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        disabled={restoringBackup}
+                      />
+                      <Button 
+                        variant="outline" 
+                        disabled={restoringBackup} 
+                        className="gap-2 pointer-events-none"
+                      >
+                        {restoringBackup ? (
+                          <Loader2 size={16} className="animate-spin" />
+                        ) : (
+                          <Upload size={16} />
+                        )}
+                        Restaurar Backup
+                      </Button>
+                    </div>
+                  </div>
                 </div>
+
+                <Button onClick={saveSiteSettings} disabled={savingSettings} className="gap-2 mt-6">
+                  {savingSettings ? (
+                    <Loader2 size={16} className="animate-spin" />
+                  ) : (
+                    <Save size={16} />
+                  )}
+                  Salvar Configurações
+                </Button>
               </div>
             </div>
           </TabsContent>
