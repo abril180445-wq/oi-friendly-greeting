@@ -31,7 +31,7 @@ const Clients = () => {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-primary mb-6">
             <Building2 size={16} className="text-primary" />
             <span className="text-primary font-medium text-sm tracking-wide">
               Nossos Clientes
@@ -42,11 +42,11 @@ const Clients = () => {
           </h2>
         </div>
 
-        {/* Infinite scroll container */}
-        <div className="relative overflow-hidden">
+        {/* Marquee Glass Container */}
+        <div className="glass-primary rounded-2xl p-6 relative overflow-hidden">
           {/* Gradient masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-primary/20 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-primary/20 to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling logos */}
           <div className="flex animate-scroll">
@@ -55,12 +55,12 @@ const Clients = () => {
                 key={index}
                 className="flex-shrink-0 mx-8 group"
               >
-                <div className="w-32 h-20 glass rounded-xl flex items-center justify-center border border-border/30 group-hover:border-primary/30 transition-all duration-300">
+                <div className="w-32 h-20 glass-primary-strong rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-all duration-300 cursor-pointer">
                   <div className="text-center">
-                    <span className="font-heading font-bold text-2xl text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                    <span className="font-heading font-bold text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
                       {client.initial}
                     </span>
-                    <p className="text-xs text-muted-foreground/60 mt-1">
+                    <p className="text-xs text-muted-foreground mt-1">
                       {client.name}
                     </p>
                   </div>
