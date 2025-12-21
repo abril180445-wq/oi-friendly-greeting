@@ -186,7 +186,7 @@ const About = () => {
             >
               <button
                 onClick={() => setShowDiploma(false)}
-                className="absolute -top-2 -right-2 z-[110] w-7 h-7 rounded-full bg-background/90 flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+                className="absolute -top-2 -right-8 z-[110] w-7 h-7 rounded-full bg-background/90 flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
               >
                 <X size={14} />
               </button>
