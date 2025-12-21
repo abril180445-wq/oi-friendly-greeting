@@ -29,7 +29,7 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: "AgendaPro - Sistema Completo de Agendamento com IA",
+      title: "AgendaPro - Agendamento Inteligente",
       client: "Salões, Barbearias e Clínicas",
       type: "Web App",
       image: "/images/project-agendaglas.png",
