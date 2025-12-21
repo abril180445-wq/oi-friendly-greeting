@@ -6,6 +6,7 @@ import Services from "@/components/mobi/Services";
 import Process from "@/components/mobi/Process";
 import Technologies from "@/components/mobi/Technologies";
 import Projects from "@/components/mobi/Projects";
+import DeliveredSites from "@/components/mobi/DeliveredSites";
 import Team from "@/components/mobi/Team";
 import Testimonials from "@/components/mobi/Testimonials";
 import FAQ from "@/components/mobi/FAQ";
@@ -25,6 +26,7 @@ const Index = () => {
         <Process />
         <Technologies />
         <Projects />
+        <DeliveredSites />
         <Team />
         <Testimonials />
         <FAQ />
