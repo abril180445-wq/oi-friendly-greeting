@@ -121,7 +121,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary/10 border border-primary/25 mb-8 animate-fade-up backdrop-blur-md shadow-inner shadow-primary/5">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-primary mb-8 animate-fade-up shadow-inner shadow-primary/5">
               <Sparkles size={16} className="text-primary animate-pulse drop-shadow-[0_0_4px_hsl(var(--primary))]" />
               <span className="text-primary font-semibold text-sm tracking-wide">
                 Desenvolvimento de Sistemas

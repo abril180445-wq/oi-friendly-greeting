@@ -53,7 +53,7 @@ const About = () => {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-primary mb-6">
             <Zap size={16} className="text-primary" />
             <span className="text-primary font-medium text-sm tracking-wide">
               Sobre Nós
@@ -88,7 +88,7 @@ const About = () => {
               />
             </div>
             {/* Floating badge */}
-            <div className="absolute -bottom-6 -right-6 glass rounded-2xl p-6 shadow-card hidden md:block animate-pulse-glow border border-primary/20">
+            <div className="absolute -bottom-6 -right-6 glass-primary rounded-2xl p-6 shadow-card hidden md:block animate-pulse-glow">
               <p className="font-heading text-4xl font-bold text-gradient glow-text">8+</p>
               <p className="text-muted-foreground text-sm font-medium">
                 Anos de experiência

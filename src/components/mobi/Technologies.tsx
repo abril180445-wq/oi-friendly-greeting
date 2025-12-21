@@ -28,7 +28,7 @@ const Technologies = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-primary mb-6">
             <Cpu size={16} className="text-primary" />
             <span className="text-primary font-medium text-sm tracking-wide">
               Tecnologias
