@@ -43,10 +43,10 @@ const Clients = () => {
         </div>
 
         {/* Marquee Glass Container */}
-        <div className="glass-primary rounded-2xl p-6 relative overflow-hidden">
+        <div className="glass-primary border-glow card-shine rounded-2xl p-6 relative overflow-hidden">
           {/* Gradient masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-primary/20 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-primary/20 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background/70 via-background/10 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background/70 via-background/10 to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling logos */}
           <div className="flex animate-scroll">
@@ -55,7 +55,7 @@ const Clients = () => {
                 key={index}
                 className="flex-shrink-0 mx-8 group"
               >
-                <div className="w-32 h-20 glass-primary-strong rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-all duration-300 cursor-pointer">
+                <div className="w-32 h-20 glass-primary-strong border-glow card-shine rounded-xl flex items-center justify-center transition-all duration-300 cursor-pointer hover:brightness-110">
                   <div className="text-center">
                     <span className="font-heading font-bold text-2xl text-foreground group-hover:text-primary transition-colors duration-300">
                       {client.initial}
