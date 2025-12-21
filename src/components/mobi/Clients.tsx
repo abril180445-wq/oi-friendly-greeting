@@ -17,7 +17,7 @@ const Clients = () => {
   ];
 
   return (
-    <section className="py-16 bg-background/70 backdrop-blur-sm relative overflow-hidden">
+    <section className="py-16 bg-background/50 backdrop-blur-sm relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 dots-pattern opacity-20" />
 

@@ -81,7 +81,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projetos" className="section-padding bg-secondary/70 backdrop-blur-sm relative overflow-hidden">
+    <section id="projetos" className="section-padding bg-secondary/50 backdrop-blur-sm relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-15" />
       <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] animate-pulse" />

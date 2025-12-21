@@ -28,7 +28,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-secondary/80 backdrop-blur-sm relative overflow-hidden">
+    <footer className="bg-secondary/60 backdrop-blur-sm relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 grid-pattern opacity-10" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
