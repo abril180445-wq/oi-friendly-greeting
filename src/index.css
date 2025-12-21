@@ -600,4 +600,80 @@
   .border-glow:hover::after {
     @apply opacity-100;
   }
+
+  /* Floating animations */
+  @keyframes floatParticle {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-10px) translateX(-5px);
+      opacity: 0.4;
+    }
+    75% {
+      transform: translateY(-30px) translateX(5px);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes streak {
+    0%, 100% {
+      opacity: 0;
+      transform: rotate(45deg) translateY(0);
+    }
+    50% {
+      opacity: 0.8;
+      transform: rotate(45deg) translateY(-50px);
+    }
+  }
+
+  @keyframes streak-slow {
+    0%, 100% {
+      opacity: 0;
+      transform: rotate(-12deg) translateY(0);
+    }
+    50% {
+      opacity: 0.6;
+      transform: rotate(-12deg) translateY(-40px);
+    }
+  }
+
+  @keyframes streak-slower {
+    0%, 100% {
+      opacity: 0;
+      transform: rotate(30deg) translateY(0);
+    }
+    50% {
+      opacity: 0.5;
+      transform: rotate(30deg) translateY(-30px);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .animate-float-slower {
+    animation: float 12s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-streak {
+    animation: streak 4s ease-in-out infinite;
+  }
+
+  .animate-streak-slow {
+    animation: streak-slow 6s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .animate-streak-slower {
+    animation: streak-slower 8s ease-in-out infinite;
+    animation-delay: 2s;
+  }
 }
