@@ -7,6 +7,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import RichTextEditor from '@/components/admin/RichTextEditor';
+import ImageUpload from '@/components/admin/ImageUpload';
 
 type Profile = {
   id: string;
@@ -408,14 +410,10 @@ const Admin = () => {
                       />
                     </div>
                   </div>
-                  <div>
-                    <label className="text-sm font-medium">URL da Imagem de Capa</label>
-                    <Input
-                      value={formData.cover_image}
-                      onChange={(e) => setFormData(prev => ({ ...prev, cover_image: e.target.value }))}
-                      placeholder="https://..."
-                    />
-                  </div>
+                  <ImageUpload
+                    value={formData.cover_image}
+                    onChange={(url) => setFormData(prev => ({ ...prev, cover_image: url }))}
+                  />
                   <div>
                     <label className="text-sm font-medium">Resumo</label>
                     <Textarea
@@ -426,13 +424,10 @@ const Admin = () => {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium">Conteúdo (HTML permitido)</label>
-                    <Textarea
-                      value={formData.content}
-                      onChange={(e) => setFormData(prev => ({ ...prev, content: e.target.value }))}
-                      placeholder="<p>Conteúdo do artigo...</p>"
-                      rows={10}
-                      required
+                    <label className="text-sm font-medium">Conteúdo</label>
+                    <RichTextEditor
+                      content={formData.content}
+                      onChange={(content) => setFormData(prev => ({ ...prev, content }))}
                     />
                   </div>
                   <div className="flex items-center gap-2">
