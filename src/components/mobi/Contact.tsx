@@ -63,7 +63,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contato" className="section-padding bg-background/70 backdrop-blur-sm relative overflow-hidden">
+    <section id="contato" className="section-padding bg-background/50 backdrop-blur-sm relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute bottom-0 left-0 w-1/2 h-full dots-pattern opacity-40" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/8 rounded-full blur-[120px] animate-pulse" />

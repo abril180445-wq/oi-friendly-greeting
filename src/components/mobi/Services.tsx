@@ -37,7 +37,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="servicos" className="section-padding bg-background/70 backdrop-blur-sm relative overflow-hidden">
+    <section id="servicos" className="section-padding bg-background/50 backdrop-blur-sm relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 dots-pattern opacity-30" />
       <div className="absolute top-1/2 -translate-y-1/2 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-[100px]" />
