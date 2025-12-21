@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Twitter, Youtube, ArrowUp, Heart, Lock } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube, ArrowUp, Heart, Lock, Instagram, Facebook, Globe } from "lucide-react";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 const Footer = () => {
+  const { settings } = useSiteSettings();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -21,12 +24,14 @@ const Footer = () => {
     "Consultoria em TI",
   ];
 
+  // Build social links dynamically from settings
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Youtube, href: "#", label: "YouTube" },
-  ];
+    { icon: Instagram, href: settings.instagram_url, label: "Instagram" },
+    { icon: Facebook, href: settings.facebook_url, label: "Facebook" },
+    { icon: Linkedin, href: settings.linkedin_url, label: "LinkedIn" },
+    { icon: Youtube, href: settings.youtube_url, label: "YouTube" },
+    { icon: Globe, href: settings.website_url, label: "Website" },
+  ].filter(link => link.href); // Only show links that have URLs
 
   return (
     <footer className="bg-secondary/60 backdrop-blur-sm relative overflow-hidden">
@@ -57,18 +62,22 @@ const Footer = () => {
               Há mais de 8 anos transformando ideias em soluções digitais
               inovadoras e escaláveis.
             </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="w-10 h-10 rounded-xl bg-muted/50 border border-border/30 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-glow transition-all duration-300"
-                >
-                  <social.icon size={18} />
-                </a>
-              ))}
-            </div>
+            {socialLinks.length > 0 && (
+              <div className="flex gap-3">
+                {socialLinks.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="w-10 h-10 rounded-xl bg-muted/50 border border-border/30 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-glow transition-all duration-300"
+                  >
+                    <social.icon size={18} />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Quick links */}

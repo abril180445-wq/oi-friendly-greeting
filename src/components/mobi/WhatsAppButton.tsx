@@ -1,10 +1,12 @@
 import { Phone } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useSiteSettings } from "@/hooks/useSiteSettings";
 
 const WhatsAppButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { settings } = useSiteSettings();
 
-  const phoneNumber = "5541997539084";
+  const phoneNumber = settings.whatsapp.replace(/\D/g, '') || "5541997539084";
   const message = encodeURIComponent(
     "Olá! Gostaria de saber mais sobre os serviços da Rorschach Motion."
   );
