@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, User, ArrowRight, Tag } from 'lucide-react';
+import { Calendar, User, ArrowRight, Tag, ArrowLeft, Home } from 'lucide-react';
 import Header from '@/components/mobi/Header';
 import Footer from '@/components/mobi/Footer';
+import { Button } from '@/components/ui/button';
 import { supabase } from '@/integrations/supabase/client';
 
 type BlogPost = {
@@ -74,6 +75,15 @@ const Blog = () => {
       
       <main className="pt-32 pb-20">
         <div className="container-custom">
+          {/* Back to Site */}
+          <Link 
+            to="/" 
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
+          >
+            <ArrowLeft size={16} />
+            Voltar ao Site
+          </Link>
+
           {/* Hero */}
           <div className="text-center mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -82,9 +92,15 @@ const Blog = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Artigos sobre <span className="text-gradient">Tecnologia</span>
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
               Dicas, tutoriais e novidades sobre desenvolvimento web, mobile e as últimas tendências do mercado digital.
             </p>
+            <Link to="/">
+              <Button variant="outline" className="gap-2">
+                <Home size={16} />
+                Ir para o Site Principal
+              </Button>
+            </Link>
           </div>
 
           {/* Posts Grid */}
