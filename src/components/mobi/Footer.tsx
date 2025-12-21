@@ -1,4 +1,5 @@
-import { Github, Linkedin, Twitter, Youtube, ArrowUp, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Github, Linkedin, Twitter, Youtube, ArrowUp, Heart, Lock } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -130,11 +131,20 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-border/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm text-center md:text-left flex items-center gap-1">
-              © {new Date().getFullYear()} Rorschach Motion. Feito com
-              <Heart size={14} className="text-primary fill-primary" />
-              no Brasil.
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-muted-foreground text-sm text-center md:text-left flex items-center gap-1">
+                © {new Date().getFullYear()} Rorschach Motion. Feito com
+                <Heart size={14} className="text-primary fill-primary" />
+                no Brasil.
+              </p>
+              <Link 
+                to="/login" 
+                className="text-muted-foreground/50 hover:text-primary transition-colors duration-300 flex items-center gap-1 text-xs"
+              >
+                <Lock size={12} />
+                Admin
+              </Link>
+            </div>
             <button
               onClick={scrollToTop}
               className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-cyan-400 text-primary-foreground flex items-center justify-center shadow-glow hover:shadow-glow-lg hover:scale-105 transition-all duration-300"
