@@ -1,10 +1,12 @@
-import { ArrowRight, Globe, Smartphone, Layers, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Globe, Smartphone, Layers, ExternalLink, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Projects = () => {
   const headerAnimation = useScrollAnimation();
   const gridAnimation = useScrollAnimation();
+  const [selectedImage, setSelectedImage] = useState<{ image: string; title: string } | null>(null);
 
   const projects = [
     {
@@ -126,7 +128,10 @@ const Projects = () => {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Image */}
-              <div className="aspect-[4/3] overflow-hidden relative">
+              <div 
+                className="aspect-[4/3] overflow-hidden relative cursor-pointer"
+                onClick={() => setSelectedImage({ image: project.image, title: project.title })}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
@@ -210,6 +215,34 @@ const Projects = () => {
             </span>
           </Button>
         </div>
+
+        {/* Image Modal */}
+        {selectedImage && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
+            onClick={() => setSelectedImage(null)}
+          >
+            <div 
+              className="relative bg-black/50 p-2 rounded-xl animate-scale-in max-w-4xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-2 right-2 z-[110] w-8 h-8 rounded-full bg-background/90 flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+              >
+                <X size={16} />
+              </button>
+              <img 
+                src={selectedImage.image.replace('w=600', 'w=1200')} 
+                alt={selectedImage.title}
+                className="w-auto h-auto max-h-[80vh] max-w-full object-contain rounded-lg"
+              />
+              <p className="text-center text-white/80 mt-3 text-sm font-medium">
+                {selectedImage.title}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
